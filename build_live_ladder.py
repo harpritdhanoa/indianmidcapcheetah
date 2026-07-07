@@ -23,6 +23,24 @@ DATA['fund_nav'] = {
     'max_dd_pct': round(_max_dd * 100, 2),
     'growth_of_1': round(_nav[-1] / _nav[0], 3),
 }
+# Benchmark comparison: rebase Nifty Midcap 150 onto the strategy NAV at the
+# first overlapping date, so both curves are in "growth of Rs 1" units.
+try:
+    _bm = json.load(open('benchmark_series.json'))
+    _nav_by_date = dict(zip(_dates, _nav))
+    _bm_pairs = [(d, c) for d, c in zip(_bm['dates'], _bm['close']) if d in _nav_by_date]
+    if len(_bm_pairs) >= 100:
+        _d0, _c0 = _bm_pairs[0]
+        _factor = _nav_by_date[_d0] / _c0
+        DATA['benchmark'] = {
+            'name': _bm['name'],
+            'from': _d0,
+            'dates': [d for d, _ in _bm_pairs],
+            'values': [round(c * _factor, 4) for _, c in _bm_pairs],
+        }
+except FileNotFoundError:
+    pass
+
 DATA_JSON = json.dumps(DATA)
 
 html = """<!DOCTYPE html>
@@ -30,6 +48,7 @@ html = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <title>Live Portfolio Monitor — 30 Holdings vs. Challengers</title>
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
 <style>
   :root {
     --bg: #0f1117; --panel: #171a23; --panel2: #1d2130; --border: #2a2f3f;
@@ -138,7 +157,22 @@ html = """<!DOCTYPE html>
       <div class="stat"><div class="v" id="f-growth"></div><div class="l">Growth of ₹1</div></div>
       <div class="stat"><div class="v" id="f-maxdd"></div><div class="l">Max drawdown (daily)</div></div>
     </div>
-    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates.</div>
+    <div class="chart-toolbar draw-toolbar" style="margin-top:12px">
+      <div class="tool-group">
+        <span style="font-size:12px"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:5px;vertical-align:middle"></span>Midcap Cheetah (growth of ₹1)</span>
+        <span style="font-size:12px;color:var(--amber)" id="bmLegend"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:5px;vertical-align:middle"></span>Nifty Midcap 150 (rebased)</span>
+      </div>
+      <div class="tool-group">
+        <button class="tool-btn active" id="bmToggle">vs Midcap 150: ON</button>
+        <button class="tool-btn" id="scaleToggle">Log scale</button>
+        <button class="tool-btn" data-range="1">1Y</button>
+        <button class="tool-btn" data-range="3">3Y</button>
+        <button class="tool-btn" data-range="5">5Y</button>
+        <button class="tool-btn" data-range="0">All</button>
+      </div>
+    </div>
+    <div id="cmpChart" style="height:340px"></div>
+    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates. The amber line is the real Nifty Midcap 150 index, rebased to the strategy NAV at the first date Yahoo carries it (Jan 2019) — the gap that opens between the two lines is the strategy's out/under-performance since then.</div>
   </div>
 
   <div class="panel">
@@ -230,6 +264,67 @@ document.getElementById('fundDesc').textContent =
 document.getElementById('f-cagr').textContent = FUND.cagr_pct.toFixed(2) + '%';
 document.getElementById('f-growth').textContent = FUND.growth_of_1.toFixed(2) + 'x';
 document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%';
+
+// --- Cheetah vs Midcap 150 comparison chart (TradingView Lightweight Charts) ---
+(function () {
+  const el = document.getElementById('cmpChart');
+  const css = getComputedStyle(document.documentElement);
+  const chart = LightweightCharts.createChart(el, {
+    layout: { background: { color: 'transparent' }, textColor: css.getPropertyValue('--muted').trim() },
+    grid: { vertLines: { color: 'rgba(42,47,63,0.5)' }, horzLines: { color: 'rgba(42,47,63,0.5)' } },
+    crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+    rightPriceScale: { borderColor: 'rgba(42,47,63,0.8)' },
+    timeScale: { borderColor: 'rgba(42,47,63,0.8)' },
+    autoSize: true,
+  });
+  const navSeries = chart.addAreaSeries({
+    lineColor: css.getPropertyValue('--accent').trim(), lineWidth: 2,
+    topColor: 'rgba(91,141,239,0.25)', bottomColor: 'rgba(91,141,239,0.02)',
+    priceFormat: { type: 'custom', formatter: v => '\\u20b9' + v.toFixed(2) },
+  });
+  navSeries.setData(FUND.dates.map((d, i) => ({ time: d, value: FUND.nav[i] })));
+
+  let bmSeries = null;
+  if (DATA.benchmark) {
+    bmSeries = chart.addLineSeries({
+      color: css.getPropertyValue('--amber').trim(), lineWidth: 2,
+      priceFormat: { type: 'custom', formatter: v => '\\u20b9' + v.toFixed(2) },
+    });
+    bmSeries.setData(DATA.benchmark.dates.map((d, i) => ({ time: d, value: DATA.benchmark.values[i] })));
+  } else {
+    document.getElementById('bmLegend').style.display = 'none';
+    document.getElementById('bmToggle').style.display = 'none';
+  }
+  chart.timeScale().fitContent();
+
+  // benchmark on/off
+  let bmOn = true;
+  document.getElementById('bmToggle').addEventListener('click', (e) => {
+    if (!bmSeries) return;
+    bmOn = !bmOn;
+    bmSeries.applyOptions({ visible: bmOn });
+    document.getElementById('bmLegend').style.opacity = bmOn ? 1 : 0.35;
+    e.target.textContent = 'vs Midcap 150: ' + (bmOn ? 'ON' : 'OFF');
+    e.target.classList.toggle('active', bmOn);
+  });
+
+  // linear/log scale
+  let logOn = false;
+  document.getElementById('scaleToggle').addEventListener('click', (e) => {
+    logOn = !logOn;
+    chart.priceScale('right').applyOptions({ mode: logOn ? LightweightCharts.PriceScaleMode.Logarithmic : LightweightCharts.PriceScaleMode.Normal });
+    e.target.classList.toggle('active', logOn);
+  });
+
+  // range buttons
+  document.querySelectorAll('[data-range]').forEach(btn => btn.addEventListener('click', () => {
+    const yrs = +btn.dataset.range;
+    if (!yrs) { chart.timeScale().fitContent(); return; }
+    const last = FUND.dates[FUND.dates.length - 1];
+    const from = new Date(last); from.setFullYear(from.getFullYear() - yrs);
+    chart.timeScale().setVisibleRange({ from: from.toISOString().slice(0, 10), to: last });
+  }));
+})();
 
 const weightByTkr = {};
 DATA.ladder.forEach(r => { weightByTkr[r.tkr] = r.w_now_pct; });

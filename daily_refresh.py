@@ -19,6 +19,7 @@ STEPS = [
     ("Refresh prices", [sys.executable, "refresh_prices.py"]),
     ("Recompute NAV history", [sys.executable, "daily_nav.py"]),
     ("Rebuild fund NAV chart data", [sys.executable, "build_fund_nav_json.py"]),
+    ("Fetch benchmark series", [sys.executable, "fetch_benchmark.py"]),
     ("Rebuild live ladder data", [sys.executable, "build_ladder_data.py"]),
     ("Rebuild HTML dashboard", [sys.executable, "build_live_ladder.py"]),
 ]
