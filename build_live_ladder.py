@@ -42,7 +42,10 @@ html = """<!DOCTYPE html>
   * { box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 32px 24px 64px; }
   .wrap { max-width: 1080px; margin: 0 auto; }
+  .title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   h1 { font-size: 24px; margin: 0 0 4px; }
+  .refresh-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 7px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .refresh-btn:hover { background: var(--border); }
   .sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
   .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 24px; }
   .panel h2 { font-size: 16px; margin: 0 0 4px; }
@@ -114,7 +117,10 @@ html = """<!DOCTYPE html>
 </head>
 <body>
 <div class="wrap">
-  <h1>Live Portfolio Monitor</h1>
+  <div class="title-row">
+    <h1>Live Portfolio Monitor</h1>
+    <a class="refresh-btn" href="https://github.com/harpritdhanoa/indianmidcapcheetah/actions/workflows/daily-refresh.yml" target="_blank" rel="noopener">↻ Refresh</a>
+  </div>
   <div class="sub" id="subline"></div>
 
   <div class="panel">
