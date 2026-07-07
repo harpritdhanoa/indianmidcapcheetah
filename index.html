@@ -17,7 +17,7 @@
   .wrap { max-width: 1080px; margin: 0 auto; }
   .title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   h1 { font-size: 24px; margin: 0 0 4px; }
-  .refresh-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 7px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .refresh-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 7px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; cursor: pointer; font-family: inherit; }
   .refresh-btn:hover { background: var(--border); }
   .sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
   .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 24px; }
@@ -92,7 +92,7 @@
 <div class="wrap">
   <div class="title-row">
     <h1>Live Portfolio Monitor</h1>
-    <a class="refresh-btn" href="https://github.com/harpritdhanoa/indianmidcapcheetah/actions/workflows/daily-refresh.yml" target="_blank" rel="noopener">↻ Refresh</a>
+    <button class="refresh-btn" id="refreshBtn" title="Trigger the GitHub Action that refreshes prices and rebuilds this page">↻ Refresh</button>
   </div>
   <div class="sub" id="subline"></div>
 
@@ -132,6 +132,37 @@
     </div>
     <div class="chart-wrap"><canvas id="navChart"></canvas></div>
     <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown here is measured on the actual daily NAV path, not just at rebalance dates — it will read worse (and more honestly) than any figure computed only at the ~21 semi-annual checkpoints. Navigate mode: scroll/pinch to zoom (both axes), click and drag to pan. Horizontal line: click anywhere to mark a NAV level. Arrow: click one date on the curve and drag to another to measure the return between them (snaps to the actual NAV series, not a free point) — CAGR is only shown for intervals of 90+ days, since annualizing a short move produces a technically-correct but misleading number; shorter arrows show % only.</div>
+  </div>
+
+  <div class="panel">
+    <h2>Midcap benchmark — daily (TradingView)</h2>
+    <div class="desc">The universe benchmark on a full TradingView chart — switch line/candles, add indicators, draw, change ranges, go fullscreen. Shows the <b>BSE 150 MidCap index</b> (near-identical universe to the Nifty Midcap 150; NSE index data isn't licensed for free TradingView embeds). Use the symbol box to compare — <b>BSE:SBIMIDMOM</b> is a Nifty Midcap 150 Momentum 50 ETF, the closest listed analogue to this strategy, and <b>BSE:MID150BEES</b> tracks the Nifty Midcap 150 itself.</div>
+    <div style="height:520px; border:1px solid var(--border); border-radius:10px; overflow:hidden">
+      <div class="tradingview-widget-container" style="height:100%; width:100%">
+        <div class="tradingview-widget-container__widget" style="height:100%; width:100%"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "autosize": true,
+          "symbol": "BSE:MID150",
+          "interval": "D",
+          "range": "ALL",
+          "style": "2",
+          "timezone": "Asia/Kolkata",
+          "theme": "dark",
+          "locale": "en",
+          "backgroundColor": "rgba(23, 26, 35, 1)",
+          "gridColor": "rgba(42, 47, 63, 0.4)",
+          "withdateranges": true,
+          "allow_symbol_change": true,
+          "details": false,
+          "hide_side_toolbar": false,
+          "save_image": true,
+          "calendar": false,
+          "support_host": "https://www.tradingview.com"
+        }
+        </script>
+      </div>
+    </div>
   </div>
 
   <div class="panel">
@@ -508,6 +539,42 @@ trs.forEach((tr, i) => {
   const rank = DATA.ladder[i-1].rank_now;
   if (rank === DATA.target_n) tr.classList.add('divider-30');
   if (rank === DATA.buffer_line) tr.classList.add('divider-36');
+});
+
+// --- One-click manual refresh (GitHub Actions workflow_dispatch) ---
+const GH_ACTIONS_PAGE = 'https://github.com/harpritdhanoa/indianmidcapcheetah/actions/workflows/daily-refresh.yml';
+const GH_DISPATCH_API = 'https://api.github.com/repos/harpritdhanoa/indianmidcapcheetah/actions/workflows/daily-refresh.yml/dispatches';
+document.getElementById('refreshBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('refreshBtn');
+  let tok = localStorage.getItem('gh_pat_cheetah');
+  if (!tok) {
+    tok = prompt('One-time setup for one-click refresh:\n\nPaste a GitHub fine-grained personal access token with "Actions: Read and write" permission on the indianmidcapcheetah repo.\n(github.com \u2192 Settings \u2192 Developer settings \u2192 Fine-grained tokens)\n\nStored only in this browser. Press Cancel to just open the Actions page instead.');
+    if (!tok) { window.open(GH_ACTIONS_PAGE, '_blank'); return; }
+    localStorage.setItem('gh_pat_cheetah', tok.trim());
+  }
+  btn.disabled = true; btn.textContent = '\u21bb Triggering\u2026';
+  try {
+    const r = await fetch(GH_DISPATCH_API, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + localStorage.getItem('gh_pat_cheetah'),
+                 'Accept': 'application/vnd.github+json',
+                 'X-GitHub-Api-Version': '2022-11-28' },
+      body: JSON.stringify({ ref: 'main' })
+    });
+    if (r.status === 204) {
+      btn.textContent = '\u2713 Refresh started \u2014 page updates in ~3 min';
+      setTimeout(() => { btn.textContent = '\u21bb Refresh'; btn.disabled = false; }, 12000);
+    } else {
+      if (r.status === 401 || r.status === 403) localStorage.removeItem('gh_pat_cheetah'); // bad/expired token: re-prompt next click
+      btn.textContent = '\u2717 Failed (' + r.status + ') \u2014 opening Actions page';
+      window.open(GH_ACTIONS_PAGE, '_blank');
+      setTimeout(() => { btn.textContent = '\u21bb Refresh'; btn.disabled = false; }, 4000);
+    }
+  } catch (e) {
+    btn.textContent = '\u2717 Network error \u2014 opening Actions page';
+    window.open(GH_ACTIONS_PAGE, '_blank');
+    setTimeout(() => { btn.textContent = '\u21bb Refresh'; btn.disabled = false; }, 4000);
+  }
 });
 </script>
 </body>
