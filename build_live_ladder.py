@@ -171,8 +171,18 @@ html = """<!DOCTYPE html>
         <button class="tool-btn" data-range="0">All</button>
       </div>
     </div>
+    <div class="chart-toolbar draw-toolbar" style="margin-top:6px">
+      <div class="tool-group">
+        <label style="color:var(--muted);font-size:12px">Align both at: <input type="date" id="anchorDate" style="background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:12px;font-family:inherit"></label>
+        <button class="tool-btn" id="anchorApply">Set start point</button>
+        <span style="color:var(--muted);font-size:12px">— or just click any point on the chart</span>
+      </div>
+      <div class="tool-group">
+        <button class="tool-btn active" id="modeNav">₹ NAV view</button>
+      </div>
+    </div>
     <div id="cmpChart" style="height:340px"></div>
-    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates. The amber line is the real Nifty Midcap 150 index, rebased to the strategy NAV at the first date Yahoo carries it (Jan 2019) — the gap that opens between the two lines is the strategy's out/under-performance since then.</div>
+    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates. The amber line is the real Nifty Midcap 150 index (Yahoo carries it from Jan 2019). <b>Compare from any start point:</b> click a point on the chart, or pick a date and press "Set start point" — both curves re-anchor to 0% at that date, TradingView-style, so the separation after it is the strategy's out/under-performance from exactly that moment. "₹ NAV view" returns to the growth-of-₹1 view.</div>
   </div>
 
   <div class="panel">
@@ -266,6 +276,9 @@ document.getElementById('f-growth').textContent = FUND.growth_of_1.toFixed(2) + 
 document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%';
 
 // --- Cheetah vs Midcap 150 comparison chart (TradingView Lightweight Charts) ---
+// Two modes: '₹ NAV' (growth of ₹1 since inception) and '% from anchor' — click any
+// point on the chart (or set a date) and BOTH series re-anchor to 0% at that date,
+// exactly like TradingView's compare mode.
 (function () {
   const el = document.getElementById('cmpChart');
   const css = getComputedStyle(document.documentElement);
@@ -277,25 +290,90 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     timeScale: { borderColor: 'rgba(42,47,63,0.8)' },
     autoSize: true,
   });
+  const rsFmt = v => '₹' + v.toFixed(2);
+  const pctFmt = v => (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
   const navSeries = chart.addAreaSeries({
     lineColor: css.getPropertyValue('--accent').trim(), lineWidth: 2,
     topColor: 'rgba(91,141,239,0.25)', bottomColor: 'rgba(91,141,239,0.02)',
-    priceFormat: { type: 'custom', formatter: v => '\\u20b9' + v.toFixed(2) },
+    priceFormat: { type: 'custom', formatter: rsFmt },
   });
-  navSeries.setData(FUND.dates.map((d, i) => ({ time: d, value: FUND.nav[i] })));
+  const NAV_RAW = FUND.dates.map((d, i) => ({ time: d, value: FUND.nav[i] }));
+  navSeries.setData(NAV_RAW);
 
-  let bmSeries = null;
+  let bmSeries = null, BM_RAW = null;
   if (DATA.benchmark) {
     bmSeries = chart.addLineSeries({
       color: css.getPropertyValue('--amber').trim(), lineWidth: 2,
-      priceFormat: { type: 'custom', formatter: v => '\\u20b9' + v.toFixed(2) },
+      priceFormat: { type: 'custom', formatter: rsFmt },
     });
-    bmSeries.setData(DATA.benchmark.dates.map((d, i) => ({ time: d, value: DATA.benchmark.values[i] })));
+    BM_RAW = DATA.benchmark.dates.map((d, i) => ({ time: d, value: DATA.benchmark.values[i] }));
+    bmSeries.setData(BM_RAW);
   } else {
     document.getElementById('bmLegend').style.display = 'none';
     document.getElementById('bmToggle').style.display = 'none';
   }
   chart.timeScale().fitContent();
+
+  // ---- anchor / mode machinery ----
+  const anchorInput = document.getElementById('anchorDate');
+  const bmStart = BM_RAW ? BM_RAW[0].time : FUND.dates[0];
+  anchorInput.min = bmStart;
+  anchorInput.max = FUND.dates[FUND.dates.length - 1];
+  anchorInput.value = bmStart;
+
+  function valueOnOrBefore(arr, t) {
+    // arr sorted by time asc; return last value with time <= t
+    let v = null;
+    for (const p of arr) { if (p.time <= t) v = p.value; else break; }
+    return v;
+  }
+  function timeToStr(t) {
+    return typeof t === 'string' ? t
+      : t.year + '-' + String(t.month).padStart(2, '0') + '-' + String(t.day).padStart(2, '0');
+  }
+
+  let mode = 'nav';
+  let logOn = false;
+  const scaleBtn = document.getElementById('scaleToggle');
+  function setLog(on) {
+    logOn = on;
+    chart.priceScale('right').applyOptions({ mode: on ? LightweightCharts.PriceScaleMode.Logarithmic : LightweightCharts.PriceScaleMode.Normal });
+    scaleBtn.classList.toggle('active', on);
+  }
+
+  function applyAnchor(t) {
+    if (!BM_RAW) return;
+    // clamp anchor into the benchmark's date range so both series have a value
+    if (t < bmStart) t = bmStart;
+    const a0 = valueOnOrBefore(NAV_RAW, t), b0 = valueOnOrBefore(BM_RAW, t);
+    if (!a0 || !b0) return;
+    mode = 'pct';
+    if (logOn) setLog(false); // % scale can be negative; log is meaningless here
+    navSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt },
+      topColor: 'rgba(91,141,239,0.18)', bottomColor: 'rgba(91,141,239,0.0)' });
+    bmSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt } });
+    navSeries.setData(NAV_RAW.map(p => ({ time: p.time, value: (p.value / a0 - 1) * 100 })));
+    bmSeries.setData(BM_RAW.map(p => ({ time: p.time, value: (p.value / b0 - 1) * 100 })));
+    const mk = [{ time: t, position: 'inBar', color: '#ffffff', shape: 'circle', text: 'start' }];
+    navSeries.setMarkers(mk); bmSeries.setMarkers([]);
+    anchorInput.value = t;
+    document.getElementById('modeNav').classList.remove('active');
+    document.getElementById('anchorApply').classList.add('active');
+  }
+
+  function backToNav() {
+    mode = 'nav';
+    navSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt },
+      topColor: 'rgba(91,141,239,0.25)', bottomColor: 'rgba(91,141,239,0.02)' });
+    navSeries.setData(NAV_RAW); navSeries.setMarkers([]);
+    if (bmSeries) { bmSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt } }); bmSeries.setData(BM_RAW); bmSeries.setMarkers([]); }
+    document.getElementById('modeNav').classList.add('active');
+    document.getElementById('anchorApply').classList.remove('active');
+  }
+
+  chart.subscribeClick(param => { if (param.time) applyAnchor(timeToStr(param.time)); });
+  document.getElementById('anchorApply').addEventListener('click', () => applyAnchor(anchorInput.value));
+  document.getElementById('modeNav').addEventListener('click', backToNav);
 
   // benchmark on/off
   let bmOn = true;
@@ -308,13 +386,7 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     e.target.classList.toggle('active', bmOn);
   });
 
-  // linear/log scale
-  let logOn = false;
-  document.getElementById('scaleToggle').addEventListener('click', (e) => {
-    logOn = !logOn;
-    chart.priceScale('right').applyOptions({ mode: logOn ? LightweightCharts.PriceScaleMode.Logarithmic : LightweightCharts.PriceScaleMode.Normal });
-    e.target.classList.toggle('active', logOn);
-  });
+  scaleBtn.addEventListener('click', () => { if (mode === 'pct') return; setLog(!logOn); });
 
   // range buttons
   document.querySelectorAll('[data-range]').forEach(btn => btn.addEventListener('click', () => {
