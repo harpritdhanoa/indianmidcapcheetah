@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-13",
+  "as_of": "2026-07-14",
   "last_churn": "2026-05-29",
   "target_n": 30,
   "buffer_line": 36,
@@ -85,7 +85,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.5,
-      "w_now_pct": 4.03
+      "w_now_pct": 4.05
     },
     {
       "tkr": "NATIONALUM",
@@ -96,7 +96,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.76,
-      "w_now_pct": 4.01
+      "w_now_pct": 4.15
     },
     {
       "tkr": "MCX",
@@ -107,7 +107,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.59,
-      "w_now_pct": 4.35
+      "w_now_pct": 4.54
     },
     {
       "tkr": "FEDERALBNK",
@@ -118,7 +118,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.54,
-      "w_now_pct": 2.94
+      "w_now_pct": 2.91
     },
     {
       "tkr": "GVT&D",
@@ -129,7 +129,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 8.05,
-      "w_now_pct": 7.12
+      "w_now_pct": 7.1
     },
     {
       "tkr": "IDEA",
@@ -143,26 +143,26 @@
       "w_now_pct": null
     },
     {
-      "tkr": "MAHABANK",
-      "name": "Bank of Maharashtra",
-      "rank_now": 7,
-      "d1w": 6,
-      "d1m": 5,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 2.35,
-      "w_now_pct": 2.51
-    },
-    {
       "tkr": "POWERINDIA",
       "name": "Hitachi Energy India Ltd.",
-      "rank_now": 8,
-      "d1w": 0,
-      "d1m": -3,
+      "rank_now": 7,
+      "d1w": 1,
+      "d1m": -2,
       "held": true,
       "tag": null,
       "w_target_pct": 8.79,
-      "w_now_pct": 7.34
+      "w_now_pct": 7.48
+    },
+    {
+      "tkr": "MAHABANK",
+      "name": "Bank of Maharashtra",
+      "rank_now": 8,
+      "d1w": 5,
+      "d1m": 4,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 2.35,
+      "w_now_pct": 2.43
     },
     {
       "tkr": "APARINDS",
@@ -173,7 +173,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.54,
-      "w_now_pct": 2.71
+      "w_now_pct": 2.65
     },
     {
       "tkr": "BHARATFORG",
@@ -184,7 +184,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.1,
-      "w_now_pct": 4.53
+      "w_now_pct": 4.46
     },
     {
       "tkr": "POLYCAB",
@@ -195,7 +195,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.18,
-      "w_now_pct": 4.15
+      "w_now_pct": 4.28
     },
     {
       "tkr": "ABCAPITAL",
@@ -206,7 +206,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.36,
-      "w_now_pct": 4.93
+      "w_now_pct": 4.84
     },
     {
       "tkr": "NAM-INDIA",
@@ -217,7 +217,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.8,
-      "w_now_pct": 3.14
+      "w_now_pct": 3.09
     },
     {
       "tkr": "LTF",
@@ -228,7 +228,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.06,
-      "w_now_pct": 3.49
+      "w_now_pct": 3.39
     },
     {
       "tkr": "RADICO",
@@ -239,7 +239,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.5,
-      "w_now_pct": 1.73
+      "w_now_pct": 1.75
     },
     {
       "tkr": "NYKAA",
@@ -250,7 +250,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.12,
-      "w_now_pct": 2.67
+      "w_now_pct": 2.65
     },
     {
       "tkr": "SAIL",
@@ -272,7 +272,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.76,
-      "w_now_pct": 1.72
+      "w_now_pct": 1.73
     },
     {
       "tkr": "INDIANB",
@@ -283,7 +283,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.91,
-      "w_now_pct": 4.07
+      "w_now_pct": 4.02
     },
     {
       "tkr": "FORTIS",
@@ -294,7 +294,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.25,
-      "w_now_pct": 2.36
+      "w_now_pct": 2.37
     },
     {
       "tkr": "ASHOKLEY",
@@ -305,7 +305,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.15,
-      "w_now_pct": 3.31
+      "w_now_pct": 3.24
     },
     {
       "tkr": "BHEL",
@@ -316,7 +316,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.9,
-      "w_now_pct": 3.86
+      "w_now_pct": 3.81
     },
     {
       "tkr": "GLENMARK",
@@ -327,7 +327,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.06,
-      "w_now_pct": 3.12
+      "w_now_pct": 3.14
     },
     {
       "tkr": "AUBANK",
@@ -338,7 +338,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.45,
-      "w_now_pct": 2.65
+      "w_now_pct": 2.61
     },
     {
       "tkr": "AUROPHARMA",
@@ -382,7 +382,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.45,
-      "w_now_pct": 2.36
+      "w_now_pct": 2.39
     },
     {
       "tkr": "NLCINDIA",
@@ -393,7 +393,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.2,
-      "w_now_pct": 1.06
+      "w_now_pct": 1.07
     },
     {
       "tkr": "THERMAX",
@@ -415,7 +415,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.63,
-      "w_now_pct": 4.28
+      "w_now_pct": 4.27
     },
     {
       "tkr": "GMRAIRPORT",
@@ -448,7 +448,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.04,
-      "w_now_pct": 3.1
+      "w_now_pct": 3.07
     },
     {
       "tkr": "LUPIN",
@@ -514,7 +514,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.89,
-      "w_now_pct": 2.95
+      "w_now_pct": 2.96
     },
     {
       "tkr": "ALKEM",
@@ -635,7 +635,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.34,
-      "w_now_pct": 1.32
+      "w_now_pct": 1.31
     },
     {
       "tkr": "JSL",
@@ -646,7 +646,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.53,
-      "w_now_pct": 1.59
+      "w_now_pct": 1.63
     }
   ]
 }
