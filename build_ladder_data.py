@@ -3,15 +3,18 @@ Rebuild live_ladder_data.json fresh, as of the latest date in prices_raw.parquet
 
 Reconstructs: today's full-universe momentum rank, rank 1 week ago and 1 month
 ago (for the delta columns), what the quality screen excludes today, what
-"if the rebalance happened today" would drop/add versus the actual last-churn
-holdings, and each held position's weight (target-at-last-churn vs. drifted
-current, per the same renormalization used when the weight columns were first
-added to the dashboard).
+"if the rebalance happened today" would drop/add versus the ACTUAL holdings,
+and each held position's weight (entry weight vs. exact current, computed
+from real share counts and today's close - not a drift approximation).
+
+Held set and weights come from actual_holdings.json (the real funded book),
+NOT weights_history.pkl - that file only backs the theoretical paper-strategy
+NAV (daily_nav.py) and its own May/Nov rebalance calendar. Two separate
+sources, by design: this ladder describes what you actually own.
 
 Consumed by build_live_ladder.py.
 """
 import json
-import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -32,11 +35,10 @@ def name_of(t_ns):
     return NAME_MAP.get(t_ns, tkr_of(t_ns))
 
 
-with open('weights_history.pkl', 'rb') as f:
-    weights_history = pickle.load(f)
-last_churn = max(weights_history.keys())
-w0 = weights_history[last_churn]
-held = set(w0.index)
+actual = json.load(open('actual_holdings.json'))
+held_map = {h['tkr'] + '.NS': h for h in actual['holdings']}
+held = set(held_map.keys())
+last_churn = actual['entry_date']
 
 as_of = px.index.max()
 
@@ -63,13 +65,11 @@ sel, retained, adds = select_with_buffer(eligible_rank_map, held, N=TARGET_N, bu
 dropped = held - sel
 added = sel - held
 
-# Drifted weight: target weight at last churn x price return since then, renormalized
-# across the held names (same calc used when weight columns were first added).
-price_then_d = asof(px.index, last_churn)
+# Exact current weight: real qty x today's close, renormalized across the held names.
+# No drift approximation needed - we have actual share counts.
 price_now_d = asof(px.index, as_of)
-p_then = px.loc[price_then_d, list(held)]
 p_now = px.loc[price_now_d, list(held)]
-value_now = w0 * (p_now / p_then)
+value_now = pd.Series({t: held_map[t]['qty'] for t in held}) * p_now
 w_now = value_now / value_now.sum()
 
 universe = set(rank_now.keys()) | held
@@ -95,7 +95,7 @@ for t in universe:
         'd1m': (rank_1mo[t] - r) if (t in rank_1mo and t in rank_now) else None,
         'held': t in held,
         'tag': tag,
-        'w_target_pct': round(float(w0[t]) * 100, 2) if t in held else None,
+        'w_target_pct': round(held_map[t]['weight_pct'], 2) if t in held else None,
         'w_now_pct': round(float(w_now[t]) * 100, 2) if t in held else None,
     })
 ladder.sort(key=lambda r: r['rank_now'])

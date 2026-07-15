@@ -77,6 +77,9 @@ html = """<!DOCTYPE html>
   h1 { font-size: 24px; margin: 0 0 4px; }
   .refresh-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 7px 14px; font-size: 13px; text-decoration: none; white-space: nowrap; cursor: pointer; font-family: inherit; }
   .refresh-btn:hover { background: var(--border); }
+  .calc-link { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .calc-link:hover { color: var(--text); }
+  .header-links { display: flex; align-items: center; gap: 14px; }
   .sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
   .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 24px; }
   .panel h2 { font-size: 16px; margin: 0 0 4px; }
@@ -155,7 +158,10 @@ html = """<!DOCTYPE html>
 <div class="wrap">
   <div class="title-row">
     <h1>Live Portfolio Monitor</h1>
-    <button class="refresh-btn" id="refreshBtn" title="Trigger the GitHub Action that refreshes prices and rebuilds this page">↻ Refresh</button>
+    <div class="header-links">
+      <a class="calc-link" href="calculation_14jul.html">How the selection is computed (14 Jul)</a>
+      <button class="refresh-btn" id="refreshBtn" title="Trigger the GitHub Action that refreshes prices and rebuilds this page">↻ Refresh</button>
+    </div>
   </div>
   <div class="sub" id="subline"></div>
 
@@ -279,10 +285,10 @@ html = """<!DOCTYPE html>
       <span><span class="dot" style="background:var(--bad)"></span>Held, ranked past the buffer — at risk</span>
       <span><span class="dot" style="background:var(--good)"></span>Not held, inside the buffer — would enter</span>
     </div>
-    <div class="callout">Δ columns show rank change vs. 1 week ago and 1 month ago. Positive = climbing (moving toward #1). Weight columns: "Target" = the weight set at the last churn (2026-05-29); "Now" = that weight drifted forward by each holding's price return since then and renormalized across the 30 positions — i.e. what the position is actually worth today, not what it was sized to. Challengers and screened-out names carry no weight (not held).</div>
+    <div class="callout" id="ladderCallout"></div>
   </div>
 
-  <footer>Portfolio = actual last-churn selection (2026-05-29). Simulation uses the same 12-1 momentum score, buffer, and selection rule as the semi-annual backtest, with a permanent quality screen applied ahead of ranking. Not investment advice.</footer>
+  <footer id="footerNote"></footer>
 </div>
 
 <script>
@@ -293,6 +299,10 @@ document.getElementById('subline').textContent =
 document.getElementById('s-portsize').textContent = DATA.portfolio_size;
 document.getElementById('s-asof').textContent = DATA.as_of;
 document.getElementById('s-lastchurn').textContent = DATA.last_churn;
+document.getElementById('ladderCallout').textContent =
+  `Δ columns show rank change vs. 1 week ago and 1 month ago. Positive = climbing (moving toward #1). Weight columns: "Target" = each holding's actual entry weight (bought ${DATA.last_churn}); "Now" = exact current weight from real share counts × today's close, renormalized across the 30 positions — i.e. what the position is actually worth today, not what it was sized to. Challengers and screened-out names carry no weight (not held).`;
+document.getElementById('footerNote').textContent =
+  `Portfolio = your actual holdings, bought ${DATA.last_churn}. Simulation uses the same 12-1 momentum score, buffer, and selection rule as the semi-annual backtest, with a permanent quality screen applied ahead of ranking. Not investment advice.`;
 document.getElementById('s-atrisk').textContent = DATA.dropped_today.length;
 
 const dropTkrs = new Set(DATA.dropped_today.map(r => r.tkr));
