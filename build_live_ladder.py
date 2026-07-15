@@ -41,6 +41,21 @@ try:
 except FileNotFoundError:
     pass
 
+# Actual funded portfolio (tracked from entry_date forward, alongside the paper strategy).
+try:
+    _ah = json.load(open('actual_holdings.json'))
+    _an = json.load(open('actual_nav.json'))
+    DATA['actual'] = {
+        'entry_date': _an['entry_date'],
+        'cost_basis': _an['cost_basis'],
+        'dates': _an['dates'],
+        'value': _an['value'],
+        'n_holdings': _ah['n_holdings'],
+        'holdings': _ah['holdings'],
+    }
+except FileNotFoundError:
+    pass
+
 DATA_JSON = json.dumps(DATA)
 
 html = """<!DOCTYPE html>
@@ -114,6 +129,11 @@ html = """<!DOCTYPE html>
   .up { color: var(--good); }
   .down { color: var(--bad); }
   .flat { color: var(--muted); }
+  table.holdings { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.holdings th, table.holdings td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); }
+  table.holdings th:nth-child(1), table.holdings td:nth-child(1) { text-align: center; width: 40px; color: var(--muted); }
+  table.holdings th:nth-child(2), table.holdings td:nth-child(2) { text-align: left; font-weight: 600; }
+  table.holdings th { color: var(--muted); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; }
   .legend-note { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 12px; }
   .legend-note span.dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
   .callout { border-left: 3px solid var(--accent); background: var(--panel2); padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--muted); margin-top: 14px; }
@@ -159,8 +179,9 @@ html = """<!DOCTYPE html>
     </div>
     <div class="chart-toolbar draw-toolbar" style="margin-top:12px">
       <div class="tool-group">
-        <span style="font-size:12px"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:5px;vertical-align:middle"></span>Midcap Cheetah (growth of ₹1)</span>
+        <span style="font-size:12px"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:5px;vertical-align:middle"></span>Strategy (paper)</span>
         <span style="font-size:12px;color:var(--amber)" id="bmLegend"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:5px;vertical-align:middle"></span>Nifty Midcap 150 (rebased)</span>
+        <span style="font-size:12px;color:var(--good);display:none" id="actualLegend"><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--good);margin-right:5px;vertical-align:middle"></span>Your portfolio (actual)</span>
       </div>
       <div class="tool-group">
         <button class="tool-btn active" id="bmToggle">vs Midcap 150: ON</button>
@@ -182,7 +203,20 @@ html = """<!DOCTYPE html>
       </div>
     </div>
     <div id="cmpChart" style="height:340px"></div>
-    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates. The amber line is the real Nifty Midcap 150 index (Yahoo carries it from Jan 2019). <b>Compare from any start point:</b> click a point on the chart, or pick a date and press "Set start point" — both curves re-anchor to 0% at that date, TradingView-style, so the separation after it is the strategy's out/under-performance from exactly that moment. "₹ NAV view" returns to the growth-of-₹1 view.</div>
+    <div class="callout">Net of the same 0.25% one-way transaction cost and semi-annual rebalance/buffer/cap rules as the live selection above. Max drawdown is measured on the actual daily NAV path, not just at rebalance dates. The amber line is the real Nifty Midcap 150 index (Yahoo carries it from Jan 2019). The paper strategy line turns faint/dashed after the live-entry marker — it keeps running as the theoretical benchmark to measure real execution against, while the green line is your actual funded book, marked to market daily. <b>Compare from any start point:</b> click a point on the chart, or pick a date and press "Set start point" — all curves re-anchor to 0% at that date, TradingView-style, so the separation after it is the out/under-performance from exactly that moment. "₹ NAV view" returns to the growth-of-₹1 view.</div>
+  </div>
+
+  <div class="panel" id="actualPanel" style="display:none">
+    <h2>Your actual portfolio</h2>
+    <div class="desc" id="actualDesc"></div>
+    <div class="stat-grid">
+      <div class="stat"><div class="v" id="a-cost"></div><div class="l">Cost basis</div></div>
+      <div class="stat"><div class="v" id="a-value"></div><div class="l">Value today</div></div>
+      <div class="stat"><div class="v" id="a-return"></div><div class="l">Return since entry</div></div>
+      <div class="stat"><div class="v" id="a-holdings"></div><div class="l">Holdings</div></div>
+    </div>
+    <h3 style="margin:22px 0 8px;font-size:14px" id="holdingsTitle">Holdings as bought</h3>
+    <table class="holdings" id="holdingsTable"></table>
   </div>
 
   <div class="panel">
@@ -275,6 +309,39 @@ document.getElementById('f-cagr').textContent = FUND.cagr_pct.toFixed(2) + '%';
 document.getElementById('f-growth').textContent = FUND.growth_of_1.toFixed(2) + 'x';
 document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%';
 
+function fmtDateLabel(iso) {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+// --- Your actual portfolio (funded book, marked to market daily) ---
+if (DATA.actual) {
+  const A = DATA.actual;
+  document.getElementById('actualPanel').style.display = '';
+  document.getElementById('actualLegend').style.display = '';
+  document.getElementById('actualDesc').textContent =
+    `Funded ${fmtDateLabel(A.entry_date)} — marked to market daily on real closes, alongside the paper strategy and Nifty Midcap 150 above.`;
+  document.getElementById('a-cost').textContent = '₹' + (A.cost_basis / 100000).toFixed(2) + 'L';
+  const lastVal = A.value[A.value.length - 1];
+  document.getElementById('a-value').textContent = '₹' + (lastVal / 100000).toFixed(2) + 'L';
+  const ret = (lastVal / A.cost_basis - 1) * 100;
+  const retEl = document.getElementById('a-return');
+  retEl.textContent = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
+  retEl.classList.add(ret > 0 ? 'up' : (ret < 0 ? 'down' : 'flat'));
+  document.getElementById('a-holdings').textContent = A.n_holdings;
+  document.getElementById('holdingsTitle').textContent = `Holdings as bought — ${fmtDateLabel(A.entry_date)}`;
+
+  let hh = '<tr><th>#</th><th>Ticker</th><th>Qty</th><th>Avg price</th><th>Cost ₹</th><th>Weight</th></tr>';
+  A.holdings.forEach((r, i) => {
+    hh += `<tr><td>${i + 1}</td><td>${r.tkr}</td><td>${r.qty}</td>` +
+      `<td>${r.avg_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>` +
+      `<td>${r.cost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>` +
+      `<td>${r.weight_pct.toFixed(2)}%</td></tr>`;
+  });
+  document.getElementById('holdingsTable').innerHTML = hh;
+}
+
 // --- Cheetah vs Midcap 150 comparison chart (TradingView Lightweight Charts) ---
 // Two modes: '₹ NAV' (growth of ₹1 since inception) and '% from anchor' — click any
 // point on the chart (or set a date) and BOTH series re-anchor to 0% at that date,
@@ -298,7 +365,23 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     priceFormat: { type: 'custom', formatter: rsFmt },
   });
   const NAV_RAW = FUND.dates.map((d, i) => ({ time: d, value: FUND.nav[i] }));
-  navSeries.setData(NAV_RAW);
+
+  // Paper strategy: solid up to (and including) the live-entry date, then faint/dashed after
+  // — it keeps running as the theoretical benchmark to measure real execution against.
+  const entryIdx = DATA.actual ? FUND.dates.indexOf(DATA.actual.entry_date) : -1;
+  const paperPre = entryIdx > -1 ? NAV_RAW.slice(0, entryIdx + 1) : NAV_RAW;
+  navSeries.setData(paperPre);
+
+  let paperFadeSeries = null, PAPER_FADE_RAW = null;
+  if (entryIdx > -1 && entryIdx < NAV_RAW.length - 1) {
+    PAPER_FADE_RAW = NAV_RAW.slice(entryIdx); // starts at the entry point so it connects, no gap
+    paperFadeSeries = chart.addLineSeries({
+      color: 'rgba(91,141,239,0.4)', lineWidth: 1.5,
+      lineStyle: LightweightCharts.LineStyle.Dashed,
+      priceFormat: { type: 'custom', formatter: rsFmt },
+    });
+    paperFadeSeries.setData(PAPER_FADE_RAW);
+  }
 
   let bmSeries = null, BM_RAW = null;
   if (DATA.benchmark) {
@@ -312,6 +395,35 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     document.getElementById('bmLegend').style.display = 'none';
     document.getElementById('bmToggle').style.display = 'none';
   }
+
+  // Actual funded portfolio: rebased onto the same "growth of ₹1" scale as the paper strategy,
+  // anchored so it starts exactly on the paper curve at entry (your book IS the strategy realised
+  // on day one) and diverges from there as real fills/slippage/cash drag play out.
+  let actualSeries = null, ACTUAL_RAW = null, actualEntryMarker = null;
+  if (DATA.actual) {
+    const A = DATA.actual;
+    const navByDate = {};
+    FUND.dates.forEach((d, i) => { navByDate[d] = FUND.nav[i]; });
+    let entryNav = navByDate[A.entry_date];
+    if (entryNav == null) {
+      for (const d of FUND.dates) { if (d <= A.entry_date) entryNav = navByDate[d]; else break; }
+    }
+    const v0 = A.value[0];
+    ACTUAL_RAW = A.dates.map((d, i) => ({ time: d, value: entryNav * (A.value[i] / v0) }));
+    actualSeries = chart.addLineSeries({
+      color: css.getPropertyValue('--good').trim(), lineWidth: 2.5,
+      priceFormat: { type: 'custom', formatter: rsFmt },
+      pointMarkersVisible: true,
+    });
+    actualSeries.setData(ACTUAL_RAW);
+    actualEntryMarker = {
+      time: A.entry_date, position: 'aboveBar', color: css.getPropertyValue('--good').trim(),
+      shape: 'circle',
+      text: `● Live entry — ${fmtDateLabel(A.entry_date)} · ₹${(A.cost_basis / 100000).toFixed(2)}L · ${A.n_holdings} holdings`,
+    };
+    actualSeries.setMarkers([actualEntryMarker]);
+  }
+
   chart.timeScale().fitContent();
 
   // ---- anchor / mode machinery ----
@@ -352,8 +464,18 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     navSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt },
       topColor: 'rgba(91,141,239,0.18)', bottomColor: 'rgba(91,141,239,0.0)' });
     bmSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt } });
-    navSeries.setData(NAV_RAW.map(p => ({ time: p.time, value: (p.value / a0 - 1) * 100 })));
+    navSeries.setData(paperPre.map(p => ({ time: p.time, value: (p.value / a0 - 1) * 100 })));
     bmSeries.setData(BM_RAW.map(p => ({ time: p.time, value: (p.value / b0 - 1) * 100 })));
+    if (paperFadeSeries) {
+      paperFadeSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt } });
+      paperFadeSeries.setData(PAPER_FADE_RAW.map(p => ({ time: p.time, value: (p.value / a0 - 1) * 100 })));
+    }
+    if (actualSeries) {
+      const aa0 = valueOnOrBefore(ACTUAL_RAW, t);
+      actualSeries.applyOptions({ priceFormat: { type: 'custom', formatter: pctFmt } });
+      actualSeries.setData(aa0 == null ? [] : ACTUAL_RAW.map(p => ({ time: p.time, value: (p.value / aa0 - 1) * 100 })));
+      actualSeries.setMarkers([]);
+    }
     const mk = [{ time: t, position: 'inBar', color: '#ffffff', shape: 'circle', text: 'start' }];
     navSeries.setMarkers(mk); bmSeries.setMarkers([]);
     anchorInput.value = t;
@@ -365,8 +487,14 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     mode = 'nav';
     navSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt },
       topColor: 'rgba(91,141,239,0.25)', bottomColor: 'rgba(91,141,239,0.02)' });
-    navSeries.setData(NAV_RAW); navSeries.setMarkers([]);
+    navSeries.setData(paperPre); navSeries.setMarkers([]);
     if (bmSeries) { bmSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt } }); bmSeries.setData(BM_RAW); bmSeries.setMarkers([]); }
+    if (paperFadeSeries) { paperFadeSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt } }); paperFadeSeries.setData(PAPER_FADE_RAW); }
+    if (actualSeries) {
+      actualSeries.applyOptions({ priceFormat: { type: 'custom', formatter: rsFmt } });
+      actualSeries.setData(ACTUAL_RAW);
+      actualSeries.setMarkers([actualEntryMarker]);
+    }
     document.getElementById('modeNav').classList.add('active');
     document.getElementById('anchorApply').classList.remove('active');
   }
@@ -396,6 +524,19 @@ document.getElementById('f-maxdd').textContent = FUND.max_dd_pct.toFixed(2) + '%
     const from = new Date(last); from.setFullYear(from.getFullYear() - yrs);
     chart.timeScale().setVisibleRange({ from: from.toISOString().slice(0, 10), to: last });
   }));
+
+  // Default view: re-anchor to the live-entry date so actual-vs-paper-vs-benchmark reads
+  // cleanly from day one, exactly like pressing "Set start point" at the entry marker, and
+  // zoom to a window around it — the full 10Y history rebased to a near-today anchor is
+  // technically correct but visually useless at "All" zoom.
+  if (DATA.actual && BM_RAW) {
+    applyAnchor(DATA.actual.entry_date);
+    const zoomFrom = new Date(DATA.actual.entry_date); zoomFrom.setDate(zoomFrom.getDate() - 90);
+    chart.timeScale().setVisibleRange({
+      from: zoomFrom.toISOString().slice(0, 10),
+      to: FUND.dates[FUND.dates.length - 1],
+    });
+  }
 })();
 
 const weightByTkr = {};

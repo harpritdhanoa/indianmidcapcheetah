@@ -1,0 +1,247 @@
+{
+  "entry_date": "2026-07-15",
+  "label": "Live entry \u2014 Midcap Cheetah actual portfolio funded",
+  "source": "Zerodha orders.csv (executed 2026-07-15 09:31, all COMPLETE)",
+  "total_cost": 1774118.73,
+  "sell_proceeds": 1302981.2,
+  "fresh_cash_added": 471137.53,
+  "n_holdings": 30,
+  "holdings": [
+    {
+      "tkr": "POWERINDIA",
+      "qty": 4,
+      "avg_price": 32953.75,
+      "cost": 131815.0,
+      "weight_pct": 7.43
+    },
+    {
+      "tkr": "POLYCAB",
+      "qty": 11,
+      "avg_price": 9567.32,
+      "cost": 105240.52,
+      "weight_pct": 5.932
+    },
+    {
+      "tkr": "GVT&D",
+      "qty": 22,
+      "avg_price": 4584.1,
+      "cost": 100850.2,
+      "weight_pct": 5.685
+    },
+    {
+      "tkr": "LAURUSLABS",
+      "qty": 59,
+      "avg_price": 1564.7,
+      "cost": 92317.3,
+      "weight_pct": 5.204
+    },
+    {
+      "tkr": "BHEL",
+      "qty": 198,
+      "avg_price": 406.43,
+      "cost": 80473.14,
+      "weight_pct": 4.536
+    },
+    {
+      "tkr": "ABCAPITAL",
+      "qty": 188,
+      "avg_price": 405.7,
+      "cost": 76271.6,
+      "weight_pct": 4.299
+    },
+    {
+      "tkr": "BSE",
+      "qty": 20,
+      "avg_price": 3773.98,
+      "cost": 75479.6,
+      "weight_pct": 4.254
+    },
+    {
+      "tkr": "FEDERALBNK",
+      "qty": 223,
+      "avg_price": 330.15,
+      "cost": 73623.45,
+      "weight_pct": 4.15
+    },
+    {
+      "tkr": "BHARATFORG",
+      "qty": 34,
+      "avg_price": 2135.72,
+      "cost": 72614.48,
+      "weight_pct": 4.093
+    },
+    {
+      "tkr": "NATIONALUM",
+      "qty": 193,
+      "avg_price": 362.6,
+      "cost": 69981.8,
+      "weight_pct": 3.945
+    },
+    {
+      "tkr": "MCX",
+      "qty": 23,
+      "avg_price": 2914.97,
+      "cost": 67044.31,
+      "weight_pct": 3.779
+    },
+    {
+      "tkr": "INDIANB",
+      "qty": 77,
+      "avg_price": 846.6,
+      "cost": 65188.2,
+      "weight_pct": 3.674
+    },
+    {
+      "tkr": "MARICO",
+      "qty": 70,
+      "avg_price": 846.59,
+      "cost": 59261.3,
+      "weight_pct": 3.34
+    },
+    {
+      "tkr": "NYKAA",
+      "qty": 178,
+      "avg_price": 324.5,
+      "cost": 57761.0,
+      "weight_pct": 3.256
+    },
+    {
+      "tkr": "LTF",
+      "qty": 166,
+      "avg_price": 319.6,
+      "cost": 53053.6,
+      "weight_pct": 2.99
+    },
+    {
+      "tkr": "MAHABANK",
+      "qty": 655,
+      "avg_price": 80.96,
+      "cost": 53028.8,
+      "weight_pct": 2.989
+    },
+    {
+      "tkr": "ASHOKLEY",
+      "qty": 333,
+      "avg_price": 157.14,
+      "cost": 52327.62,
+      "weight_pct": 2.949
+    },
+    {
+      "tkr": "NAM-INDIA",
+      "qty": 43,
+      "avg_price": 1205.61,
+      "cost": 51841.23,
+      "weight_pct": 2.922
+    },
+    {
+      "tkr": "AUROPHARMA",
+      "qty": 32,
+      "avg_price": 1562.6,
+      "cost": 50003.2,
+      "weight_pct": 2.818
+    },
+    {
+      "tkr": "AUBANK",
+      "qty": 41,
+      "avg_price": 1047.5,
+      "cost": 42947.5,
+      "weight_pct": 2.421
+    },
+    {
+      "tkr": "APARINDS",
+      "qty": 3,
+      "avg_price": 14142.0,
+      "cost": 42426.0,
+      "weight_pct": 2.391
+    },
+    {
+      "tkr": "SAIL",
+      "qty": 253,
+      "avg_price": 166.8,
+      "cost": 42200.4,
+      "weight_pct": 2.379
+    },
+    {
+      "tkr": "FORTIS",
+      "qty": 42,
+      "avg_price": 979.4,
+      "cost": 41134.8,
+      "weight_pct": 2.319
+    },
+    {
+      "tkr": "NMDC",
+      "qty": 466,
+      "avg_price": 85.16,
+      "cost": 39684.56,
+      "weight_pct": 2.237
+    },
+    {
+      "tkr": "GLENMARK",
+      "qty": 16,
+      "avg_price": 2313.2,
+      "cost": 37011.2,
+      "weight_pct": 2.086
+    },
+    {
+      "tkr": "RADICO",
+      "qty": 9,
+      "avg_price": 4104.1,
+      "cost": 36936.9,
+      "weight_pct": 2.082
+    },
+    {
+      "tkr": "KEI",
+      "qty": 6,
+      "avg_price": 5136.67,
+      "cost": 30820.02,
+      "weight_pct": 1.737
+    },
+    {
+      "tkr": "THERMAX",
+      "qty": 6,
+      "avg_price": 4449.0,
+      "cost": 26694.0,
+      "weight_pct": 1.505
+    },
+    {
+      "tkr": "AIAENG",
+      "qty": 5,
+      "avg_price": 4829.0,
+      "cost": 24145.0,
+      "weight_pct": 1.361
+    },
+    {
+      "tkr": "NLCINDIA",
+      "qty": 72,
+      "avg_price": 304.75,
+      "cost": 21942.0,
+      "weight_pct": 1.237
+    }
+  ],
+  "funded_by_sells": [
+    {
+      "tkr": "HAVELLS",
+      "qty": 176,
+      "avg_price": 1191.78,
+      "cost": 209753.28
+    },
+    {
+      "tkr": "DMART",
+      "qty": 82,
+      "avg_price": 3906.64,
+      "cost": 320344.48
+    },
+    {
+      "tkr": "TATACONSUM",
+      "qty": 312,
+      "avg_price": 1092.45,
+      "cost": 340844.4
+    },
+    {
+      "tkr": "TITAN",
+      "qty": 94,
+      "avg_price": 4596.16,
+      "cost": 432039.04
+    }
+  ]
+}
