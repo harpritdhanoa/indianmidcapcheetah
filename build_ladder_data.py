@@ -114,9 +114,21 @@ screened_out = sorted(
     key=rank_key,
 )
 
+
+def next_semiannual_date(from_date):
+    # Rebalance cadence per engine.py: last trading day of May / November.
+    d = pd.Timestamp(from_date)
+    candidates = [pd.Timestamp(year=y, month=m, day=1) + pd.offsets.BMonthEnd(1)
+                  for y in (d.year, d.year + 1) for m in (5, 11)]
+    return min(c for c in candidates if c > d)
+
+
+next_rebalance = next_semiannual_date(as_of)
+
 data = {
     'as_of': str(pd.Timestamp(as_of).date()),
     'last_churn': str(pd.Timestamp(last_churn).date()),
+    'next_rebalance': str(next_rebalance.date()),
     'target_n': TARGET_N,
     'buffer_line': int(round((1 + BUFFER) * TARGET_N)),
     'portfolio_size': len(held),

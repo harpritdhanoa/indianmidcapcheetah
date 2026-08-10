@@ -170,6 +170,7 @@ html = """<!DOCTYPE html>
       <div class="stat"><div class="v" id="s-portsize"></div><div class="l">Current holdings</div></div>
       <div class="stat"><div class="v" id="s-asof"></div><div class="l">Ranks as of</div></div>
       <div class="stat"><div class="v" id="s-lastchurn"></div><div class="l">Bought at last churn</div></div>
+      <div class="stat"><div class="v" id="s-nextrebal"></div><div class="l">Next rebalance</div></div>
       <div class="stat"><div class="v" id="s-atrisk"></div><div class="l">Holdings at risk today</div></div>
       <div class="stat"><div class="v" id="s-wtatrisk"></div><div class="l">Portfolio weight at risk</div></div>
     </div>
@@ -258,7 +259,7 @@ html = """<!DOCTYPE html>
 
   <div class="panel">
     <h2>If the rebalance happened today</h2>
-    <div class="desc">This runs the real selection rule (top 30, 20% buffer) against today's ranks, using your actual 30 holdings as the starting point — not a hypothetical.</div>
+    <div class="desc" id="rebalDesc"></div>
     <div class="verdict-grid">
       <div class="verdict-box drop">
         <h3>Would be dropped</h3>
@@ -299,6 +300,9 @@ document.getElementById('subline').textContent =
 document.getElementById('s-portsize').textContent = DATA.portfolio_size;
 document.getElementById('s-asof').textContent = DATA.as_of;
 document.getElementById('s-lastchurn').textContent = DATA.last_churn;
+document.getElementById('s-nextrebal').textContent = DATA.next_rebalance;
+document.getElementById('rebalDesc').textContent =
+  `This runs the real selection rule (top 30, 20% buffer) against today's ranks, using your actual 30 holdings as the starting point — not a hypothetical. The next scheduled rebalance (semi-annual, last trading day of May/November) is ${DATA.next_rebalance}.`;
 document.getElementById('ladderCallout').textContent =
   `Δ columns show rank change vs. 1 week ago and 1 month ago. Positive = climbing (moving toward #1). Weight columns: "Target" = each holding's actual entry weight (bought ${DATA.last_churn}); "Now" = exact current weight from real share counts × today's close, renormalized across the 30 positions — i.e. what the position is actually worth today, not what it was sized to. Challengers and screened-out names carry no weight (not held).`;
 document.getElementById('footerNote').textContent =
