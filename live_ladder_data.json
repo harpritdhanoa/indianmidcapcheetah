@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-10",
+  "as_of": "2026-08-11",
   "last_churn": "2026-07-15",
   "next_rebalance": "2026-11-30",
   "target_n": 30,
@@ -76,7 +76,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.2,
-      "w_now_pct": 6.05
+      "w_now_pct": 6.02
     },
     {
       "tkr": "FEDERALBNK",
@@ -87,7 +87,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": 4.39
+      "w_now_pct": 4.37
     },
     {
       "tkr": "NATIONALUM",
@@ -98,7 +98,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.94,
-      "w_now_pct": 4.09
+      "w_now_pct": 4.18
     },
     {
       "tkr": "BHARATFORG",
@@ -109,7 +109,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.09,
-      "w_now_pct": 4.26
+      "w_now_pct": 3.87
     },
     {
       "tkr": "RADICO",
@@ -120,7 +120,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": 2.23
+      "w_now_pct": 2.26
     },
     {
       "tkr": "GVT&D",
@@ -131,7 +131,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.68,
-      "w_now_pct": 5.07
+      "w_now_pct": 5.26
     },
     {
       "tkr": "MAHABANK",
@@ -142,7 +142,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.83
+      "w_now_pct": 2.81
     },
     {
       "tkr": "LTF",
@@ -153,7 +153,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.83
+      "w_now_pct": 2.87
     },
     {
       "tkr": "MCX",
@@ -164,7 +164,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.78,
-      "w_now_pct": 3.33
+      "w_now_pct": 3.55
     },
     {
       "tkr": "IDEA",
@@ -186,7 +186,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.3,
-      "w_now_pct": 4.21
+      "w_now_pct": 4.22
     },
     {
       "tkr": "NYKAA",
@@ -197,7 +197,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.26,
-      "w_now_pct": 3.24
+      "w_now_pct": 3.21
     },
     {
       "tkr": "NAM-INDIA",
@@ -208,7 +208,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.92,
-      "w_now_pct": 2.81
+      "w_now_pct": 2.77
     },
     {
       "tkr": "AUROPHARMA",
@@ -241,7 +241,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": 7.79
+      "w_now_pct": 7.81
     },
     {
       "tkr": "AIAENG",
@@ -263,7 +263,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.67,
-      "w_now_pct": 3.77
+      "w_now_pct": 3.74
     },
     {
       "tkr": "APARINDS",
@@ -274,7 +274,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.39,
-      "w_now_pct": 2.79
+      "w_now_pct": 2.75
     },
     {
       "tkr": "AJANTPHARM",
@@ -296,7 +296,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.54,
-      "w_now_pct": 4.4
+      "w_now_pct": 4.45
     },
     {
       "tkr": "PHOENIXLTD",
@@ -329,7 +329,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.5,
-      "w_now_pct": 1.34
+      "w_now_pct": 1.35
     },
     {
       "tkr": "POLYCAB",
@@ -340,13 +340,13 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.93,
-      "w_now_pct": 5.63
+      "w_now_pct": 5.57
     },
     {
       "tkr": "KEI",
       "name": "KEI Industries Ltd.",
       "rank_now": 26,
-      "d1w": -1,
+      "d1w": 0,
       "d1m": -3,
       "held": true,
       "tag": null,
@@ -362,7 +362,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.42,
-      "w_now_pct": 2.41
+      "w_now_pct": 2.39
     },
     {
       "tkr": "BSE",
@@ -373,7 +373,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.25,
-      "w_now_pct": 3.8
+      "w_now_pct": 3.94
     },
     {
       "tkr": "ASHOKLEY",
@@ -384,18 +384,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.95,
-      "w_now_pct": 3.24
+      "w_now_pct": 3.21
     },
     {
       "tkr": "MARICO",
       "name": "Marico Ltd.",
       "rank_now": 30,
-      "d1w": -4,
+      "d1w": -5,
       "d1m": -6,
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": 3.31
+      "w_now_pct": 3.32
     },
     {
       "tkr": "FORTIS",
@@ -406,7 +406,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.32,
-      "w_now_pct": 2.22
+      "w_now_pct": 2.17
     },
     {
       "tkr": "ALKEM",
@@ -423,12 +423,12 @@
       "tkr": "NMDC",
       "name": "NMDC Ltd.",
       "rank_now": 33,
-      "d1w": -4,
+      "d1w": -5,
       "d1m": -3,
       "held": true,
       "tag": null,
       "w_target_pct": 2.24,
-      "w_now_pct": 2.2
+      "w_now_pct": 2.22
     },
     {
       "tkr": "OFSS",
@@ -478,7 +478,7 @@
       "tkr": "IPCALAB",
       "name": "Ipca Laboratories Ltd.",
       "rank_now": 38,
-      "d1w": -10,
+      "d1w": -9,
       "d1m": -6,
       "held": false,
       "tag": null,
@@ -494,7 +494,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.38,
-      "w_now_pct": 2.49
+      "w_now_pct": 2.43
     },
     {
       "tkr": "3MINDIA",
@@ -538,7 +538,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.09,
-      "w_now_pct": 2.02
+      "w_now_pct": 2.0
     },
     {
       "tkr": "INDUSINDBK",
