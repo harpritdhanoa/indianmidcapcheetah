@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-11",
+  "as_of": "2026-08-12",
   "last_churn": "2026-07-15",
   "next_rebalance": "2026-11-30",
   "target_n": 30,
@@ -76,7 +76,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.2,
-      "w_now_pct": 6.02
+      "w_now_pct": 5.94
     },
     {
       "tkr": "FEDERALBNK",
@@ -87,7 +87,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": 4.37
+      "w_now_pct": 4.33
     },
     {
       "tkr": "NATIONALUM",
@@ -98,7 +98,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.94,
-      "w_now_pct": 4.18
+      "w_now_pct": 4.41
     },
     {
       "tkr": "BHARATFORG",
@@ -109,7 +109,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.09,
-      "w_now_pct": 3.87
+      "w_now_pct": 3.85
     },
     {
       "tkr": "RADICO",
@@ -120,18 +120,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": 2.26
+      "w_now_pct": 2.22
     },
     {
       "tkr": "GVT&D",
       "name": "GE Vernova T&D India Ltd.",
       "rank_now": 6,
-      "d1w": 5,
+      "d1w": 4,
       "d1m": -3,
       "held": true,
       "tag": null,
       "w_target_pct": 5.68,
-      "w_now_pct": 5.26
+      "w_now_pct": 5.27
     },
     {
       "tkr": "MAHABANK",
@@ -142,7 +142,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.81
+      "w_now_pct": 2.92
     },
     {
       "tkr": "LTF",
@@ -153,7 +153,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.87
+      "w_now_pct": 2.86
     },
     {
       "tkr": "MCX",
@@ -164,7 +164,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.78,
-      "w_now_pct": 3.55
+      "w_now_pct": 3.72
     },
     {
       "tkr": "IDEA",
@@ -178,32 +178,32 @@
       "w_now_pct": null
     },
     {
-      "tkr": "ABCAPITAL",
-      "name": "Aditya Birla Capital Ltd.",
-      "rank_now": 11,
-      "d1w": 3,
-      "d1m": 1,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 4.3,
-      "w_now_pct": 4.22
-    },
-    {
       "tkr": "NYKAA",
       "name": "FSN E-Commerce Ventures Ltd.",
-      "rank_now": 12,
-      "d1w": -3,
-      "d1m": 10,
+      "rank_now": 11,
+      "d1w": 0,
+      "d1m": 11,
       "held": true,
       "tag": null,
       "w_target_pct": 3.26,
-      "w_now_pct": 3.21
+      "w_now_pct": 3.18
+    },
+    {
+      "tkr": "ABCAPITAL",
+      "name": "Aditya Birla Capital Ltd.",
+      "rank_now": 12,
+      "d1w": 2,
+      "d1m": 0,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.3,
+      "w_now_pct": 4.2
     },
     {
       "tkr": "NAM-INDIA",
       "name": "Nippon Life India Asset Management Ltd.",
       "rank_now": 13,
-      "d1w": -5,
+      "d1w": -4,
       "d1m": 0,
       "held": true,
       "tag": null,
@@ -219,7 +219,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.82,
-      "w_now_pct": 2.92
+      "w_now_pct": 2.9
     },
     {
       "tkr": "LUPIN",
@@ -241,18 +241,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": 7.81
+      "w_now_pct": 7.79
     },
     {
       "tkr": "AIAENG",
       "name": "AIA Engineering Ltd.",
       "rank_now": 17,
-      "d1w": -7,
+      "d1w": -9,
       "d1m": 2,
       "held": true,
       "tag": null,
       "w_target_pct": 1.36,
-      "w_now_pct": 1.33
+      "w_now_pct": 1.23
     },
     {
       "tkr": "INDIANB",
@@ -263,7 +263,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.67,
-      "w_now_pct": 3.74
+      "w_now_pct": 3.76
     },
     {
       "tkr": "APARINDS",
@@ -274,7 +274,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.39,
-      "w_now_pct": 2.75
+      "w_now_pct": 2.94
     },
     {
       "tkr": "AJANTPHARM",
@@ -296,7 +296,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.54,
-      "w_now_pct": 4.45
+      "w_now_pct": 4.52
     },
     {
       "tkr": "PHOENIXLTD",
@@ -313,12 +313,12 @@
       "tkr": "NLCINDIA",
       "name": "NLC India Ltd.",
       "rank_now": 23,
-      "d1w": 1,
+      "d1w": 0,
       "d1m": 5,
       "held": true,
       "tag": null,
       "w_target_pct": 1.24,
-      "w_now_pct": 1.13
+      "w_now_pct": 1.08
     },
     {
       "tkr": "THERMAX",
@@ -329,7 +329,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.5,
-      "w_now_pct": 1.35
+      "w_now_pct": 1.33
     },
     {
       "tkr": "POLYCAB",
@@ -340,29 +340,29 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.93,
-      "w_now_pct": 5.57
+      "w_now_pct": 5.56
     },
     {
       "tkr": "KEI",
       "name": "KEI Industries Ltd.",
       "rank_now": 26,
-      "d1w": 0,
+      "d1w": -1,
       "d1m": -3,
       "held": true,
       "tag": null,
       "w_target_pct": 1.74,
-      "w_now_pct": 1.87
+      "w_now_pct": 1.88
     },
     {
       "tkr": "AUBANK",
       "name": "AU Small Finance Bank Ltd.",
       "rank_now": 27,
-      "d1w": -4,
+      "d1w": -3,
       "d1m": -1,
       "held": true,
       "tag": null,
       "w_target_pct": 2.42,
-      "w_now_pct": 2.39
+      "w_now_pct": 2.43
     },
     {
       "tkr": "BSE",
@@ -373,7 +373,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.25,
-      "w_now_pct": 3.94
+      "w_now_pct": 3.84
     },
     {
       "tkr": "ASHOKLEY",
@@ -384,18 +384,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.95,
-      "w_now_pct": 3.21
+      "w_now_pct": 3.2
     },
     {
       "tkr": "MARICO",
       "name": "Marico Ltd.",
       "rank_now": 30,
-      "d1w": -5,
+      "d1w": -4,
       "d1m": -6,
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": 3.32
+      "w_now_pct": 3.26
     },
     {
       "tkr": "FORTIS",
@@ -406,7 +406,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.32,
-      "w_now_pct": 2.17
+      "w_now_pct": 2.06
     },
     {
       "tkr": "ALKEM",
@@ -423,12 +423,12 @@
       "tkr": "NMDC",
       "name": "NMDC Ltd.",
       "rank_now": 33,
-      "d1w": -5,
+      "d1w": -4,
       "d1m": -3,
       "held": true,
       "tag": null,
       "w_target_pct": 2.24,
-      "w_now_pct": 2.22
+      "w_now_pct": 2.18
     },
     {
       "tkr": "OFSS",
@@ -478,7 +478,7 @@
       "tkr": "IPCALAB",
       "name": "Ipca Laboratories Ltd.",
       "rank_now": 38,
-      "d1w": -9,
+      "d1w": -10,
       "d1m": -6,
       "held": false,
       "tag": null,
@@ -494,7 +494,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.38,
-      "w_now_pct": 2.43
+      "w_now_pct": 2.39
     },
     {
       "tkr": "3MINDIA",
@@ -538,7 +538,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.09,
-      "w_now_pct": 2.0
+      "w_now_pct": 1.99
     },
     {
       "tkr": "INDUSINDBK",
