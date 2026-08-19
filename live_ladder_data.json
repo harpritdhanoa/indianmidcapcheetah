@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-18",
+  "as_of": "2026-08-19",
   "last_churn": "2026-07-15",
   "next_rebalance": "2026-11-30",
   "target_n": 30,
@@ -70,7 +70,7 @@
     {
       "tkr": "GMRAIRPORT",
       "name": "GMR Airports Ltd.",
-      "rank": 43,
+      "rank": 42,
       "reasons": [
         "negative net worth (-2480 Cr as of FY2026-03-31)",
         "net losses in 2/3 of last fiscal years"
@@ -88,26 +88,26 @@
   ],
   "ladder": [
     {
-      "tkr": "LAURUSLABS",
-      "name": "Laurus Labs Ltd.",
-      "rank_now": 1,
-      "d1w": 0,
-      "d1m": 0,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 5.2,
-      "w_now_pct": 5.91
-    },
-    {
       "tkr": "FEDERALBNK",
       "name": "Federal Bank Ltd.",
-      "rank_now": 2,
-      "d1w": 0,
-      "d1m": 1,
+      "rank_now": 1,
+      "d1w": 1,
+      "d1m": 2,
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": 4.4
+      "w_now_pct": 4.46
+    },
+    {
+      "tkr": "LAURUSLABS",
+      "name": "Laurus Labs Ltd.",
+      "rank_now": 2,
+      "d1w": -1,
+      "d1m": -1,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 5.2,
+      "w_now_pct": 5.92
     },
     {
       "tkr": "BHARATFORG",
@@ -118,7 +118,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.09,
-      "w_now_pct": 3.94
+      "w_now_pct": 3.92
     },
     {
       "tkr": "NATIONALUM",
@@ -129,7 +129,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.94,
-      "w_now_pct": 4.13
+      "w_now_pct": 4.16
     },
     {
       "tkr": "RADICO",
@@ -140,7 +140,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": 2.35
+      "w_now_pct": 2.36
     },
     {
       "tkr": "LTF",
@@ -151,7 +151,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.98
+      "w_now_pct": 2.92
     },
     {
       "tkr": "MCX",
@@ -162,18 +162,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.78,
-      "w_now_pct": 3.86
+      "w_now_pct": 3.81
     },
     {
       "tkr": "ABCAPITAL",
       "name": "Aditya Birla Capital Ltd.",
       "rank_now": 8,
-      "d1w": 3,
+      "d1w": 4,
       "d1m": 6,
       "held": true,
       "tag": null,
       "w_target_pct": 4.3,
-      "w_now_pct": 4.17
+      "w_now_pct": 4.15
     },
     {
       "tkr": "GVT&D",
@@ -184,18 +184,18 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.68,
-      "w_now_pct": 5.09
+      "w_now_pct": 5.03
     },
     {
       "tkr": "NYKAA",
       "name": "FSN E-Commerce Ventures Ltd.",
       "rank_now": 10,
-      "d1w": 2,
+      "d1w": 1,
       "d1m": 6,
       "held": true,
       "tag": null,
       "w_target_pct": 3.26,
-      "w_now_pct": 3.15
+      "w_now_pct": 3.25
     },
     {
       "tkr": "BHEL",
@@ -206,7 +206,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.54,
-      "w_now_pct": 4.64
+      "w_now_pct": 4.63
     },
     {
       "tkr": "MAHABANK",
@@ -239,7 +239,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": 7.79
+      "w_now_pct": 7.54
     },
     {
       "tkr": "AIAENG",
@@ -250,7 +250,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.36,
-      "w_now_pct": 1.23
+      "w_now_pct": 1.22
     },
     {
       "tkr": "AUROPHARMA",
@@ -261,7 +261,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.82,
-      "w_now_pct": 2.91
+      "w_now_pct": 2.9
     },
     {
       "tkr": "NAM-INDIA",
@@ -272,7 +272,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.92,
-      "w_now_pct": 2.78
+      "w_now_pct": 2.92
     },
     {
       "tkr": "APARINDS",
@@ -283,7 +283,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.39,
-      "w_now_pct": 2.85
+      "w_now_pct": 2.78
     },
     {
       "tkr": "LUPIN",
@@ -316,7 +316,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.67,
-      "w_now_pct": 3.72
+      "w_now_pct": 3.75
     },
     {
       "tkr": "AUBANK",
@@ -327,7 +327,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.42,
-      "w_now_pct": 2.43
+      "w_now_pct": 2.46
     },
     {
       "tkr": "IPCALAB",
@@ -349,7 +349,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.95,
-      "w_now_pct": 3.24
+      "w_now_pct": 3.21
     },
     {
       "tkr": "OFSS",
@@ -382,7 +382,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": 3.25
+      "w_now_pct": 3.32
     },
     {
       "tkr": "POLYCAB",
@@ -393,7 +393,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.93,
-      "w_now_pct": 5.55
+      "w_now_pct": 5.6
     },
     {
       "tkr": "BSE",
@@ -404,7 +404,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.25,
-      "w_now_pct": 3.65
+      "w_now_pct": 3.74
     },
     {
       "tkr": "BANKINDIA",
@@ -426,7 +426,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.24,
-      "w_now_pct": 2.17
+      "w_now_pct": 2.16
     },
     {
       "tkr": "M&MFIN",
@@ -470,7 +470,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.24,
-      "w_now_pct": 1.1
+      "w_now_pct": 1.08
     },
     {
       "tkr": "SAIL",
@@ -481,7 +481,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.38,
-      "w_now_pct": 2.38
+      "w_now_pct": 2.44
     },
     {
       "tkr": "FORTIS",
@@ -492,7 +492,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.32,
-      "w_now_pct": 2.12
+      "w_now_pct": 2.13
     },
     {
       "tkr": "KEI",
@@ -503,7 +503,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.74,
-      "w_now_pct": 1.92
+      "w_now_pct": 1.9
     },
     {
       "tkr": "3MINDIA",
@@ -539,24 +539,24 @@
       "w_now_pct": null
     },
     {
-      "tkr": "HEROMOTOCO",
-      "name": "Hero MotoCorp Ltd.",
+      "tkr": "GMRAIRPORT",
+      "name": "GMR Airports Ltd.",
       "rank_now": 42,
-      "d1w": 0,
-      "d1m": -6,
+      "d1w": -1,
+      "d1m": -16,
       "held": false,
-      "tag": null,
+      "tag": "screened",
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "GMRAIRPORT",
-      "name": "GMR Airports Ltd.",
+      "tkr": "HEROMOTOCO",
+      "name": "Hero MotoCorp Ltd.",
       "rank_now": 43,
-      "d1w": -2,
-      "d1m": -17,
+      "d1w": -1,
+      "d1m": -7,
       "held": false,
-      "tag": "screened",
+      "tag": null,
       "w_target_pct": null,
       "w_now_pct": null
     },
@@ -646,7 +646,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.09,
-      "w_now_pct": 2.04
+      "w_now_pct": 2.0
     }
   ]
 }
