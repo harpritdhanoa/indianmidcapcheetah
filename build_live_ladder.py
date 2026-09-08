@@ -45,13 +45,21 @@ except FileNotFoundError:
 try:
     _ah = json.load(open('actual_holdings.json'))
     _an = json.load(open('actual_nav.json'))
+    _now_by_tkr = {h['tkr']: h for h in _an.get('holdings_now', [])}
+    _holdings = []
+    for h in _ah['holdings']:
+        h = dict(h)
+        _now = _now_by_tkr.get(h['tkr'])
+        h['current_price'] = _now['current_price'] if _now else None
+        h['profit_pct'] = _now['profit_pct'] if _now else None
+        _holdings.append(h)
     DATA['actual'] = {
         'entry_date': _an['entry_date'],
         'cost_basis': _an['cost_basis'],
         'dates': _an['dates'],
         'value': _an['value'],
         'n_holdings': _ah['n_holdings'],
-        'holdings': _ah['holdings'],
+        'holdings': _holdings,
     }
 except FileNotFoundError:
     pass
@@ -136,7 +144,10 @@ html = """<!DOCTYPE html>
   table.holdings th, table.holdings td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); }
   table.holdings th:nth-child(1), table.holdings td:nth-child(1) { text-align: center; width: 40px; color: var(--muted); }
   table.holdings th:nth-child(2), table.holdings td:nth-child(2) { text-align: left; font-weight: 600; }
-  table.holdings th { color: var(--muted); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; }
+  table.holdings th { color: var(--muted); font-weight: 600; font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; cursor: pointer; user-select: none; white-space: nowrap; }
+  table.holdings th:hover { color: var(--text); }
+  table.holdings th.sorted { color: var(--accent); }
+  table.holdings th sup { font-size: 8px; margin-left: 1px; }
   .legend-note { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 12px; }
   .legend-note span.dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
   .callout { border-left: 3px solid var(--accent); background: var(--panel2); padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--muted); margin-top: 14px; }
@@ -223,7 +234,8 @@ html = """<!DOCTYPE html>
       <div class="stat"><div class="v" id="a-holdings"></div><div class="l">Holdings</div></div>
     </div>
     <h3 style="margin:22px 0 8px;font-size:14px" id="holdingsTitle">Holdings as bought</h3>
-    <table class="holdings" id="holdingsTable"></table>
+    <div style="overflow-x:auto"><table class="holdings" id="holdingsTable"></table></div>
+    <div class="legend-note" style="margin-top:8px"><span>Click a column header to sort · shift-click to add a secondary sort key</span></div>
   </div>
 
   <div class="panel">
@@ -346,14 +358,68 @@ if (DATA.actual) {
   document.getElementById('a-holdings').textContent = A.n_holdings;
   document.getElementById('holdingsTitle').textContent = `Holdings as bought — ${fmtDateLabel(A.entry_date)}`;
 
-  let hh = '<tr><th>#</th><th>Ticker</th><th>Qty</th><th>Avg price</th><th>Cost ₹</th><th>Weight</th></tr>';
-  A.holdings.forEach((r, i) => {
-    hh += `<tr><td>${i + 1}</td><td>${r.tkr}</td><td>${r.qty}</td>` +
-      `<td>${r.avg_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>` +
-      `<td>${r.cost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>` +
-      `<td>${r.weight_pct.toFixed(2)}%</td></tr>`;
-  });
-  document.getElementById('holdingsTable').innerHTML = hh;
+  // Sortable holdings table: click a header to sort by it (toggles asc/desc); shift-click
+  // adds it as an additional sort key so ties break on a second (or third, ...) column.
+  const holdingCols = [
+    { key: 'idx', label: '#' },
+    { key: 'tkr', label: 'Ticker' },
+    { key: 'qty', label: 'Qty' },
+    { key: 'avg_price', label: 'Avg price' },
+    { key: 'cost', label: 'Cost ₹' },
+    { key: 'weight_pct', label: 'Weight' },
+    { key: 'current_price', label: 'Current price' },
+    { key: 'profit_pct', label: 'Profit %' },
+  ];
+  const baseHoldings = A.holdings.map((r, i) => ({ ...r, idx: i + 1 }));
+  let holdingsSort = [];
+
+  function renderHoldingsTable() {
+    const rows = baseHoldings.slice();
+    if (holdingsSort.length) {
+      rows.sort((a, b) => {
+        for (const s of holdingsSort) {
+          const av = a[s.key], bv = b[s.key];
+          if (av == null && bv == null) continue;
+          if (av == null) return 1;   // nulls sort last regardless of direction
+          if (bv == null) return -1;
+          if (typeof av === 'string') { const c = av.localeCompare(bv); if (c) return c * s.dir; }
+          else if (av !== bv) return (av - bv) * s.dir;
+        }
+        return 0;
+      });
+    }
+    let hh = '<tr>' + holdingCols.map(c => {
+      const si = holdingsSort.findIndex(s => s.key === c.key);
+      const arrow = si > -1 ? (holdingsSort[si].dir === 1 ? ' ▲' : ' ▼') : '';
+      const rank = si > -1 && holdingsSort.length > 1 ? `<sup>${si + 1}</sup>` : '';
+      return `<th data-key="${c.key}" class="${si > -1 ? 'sorted' : ''}" title="Click to sort, shift-click to add a secondary sort">${c.label}${arrow}${rank}</th>`;
+    }).join('') + '</tr>';
+    rows.forEach(r => {
+      const priceCell = r.current_price == null ? '<td style="color:var(--muted)">—</td>' :
+        `<td>${r.current_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>`;
+      const profitCell = r.profit_pct == null ? '<td style="color:var(--muted)">—</td>' :
+        `<td class="${r.profit_pct > 0 ? 'up' : (r.profit_pct < 0 ? 'down' : '')}">${r.profit_pct >= 0 ? '+' : ''}${r.profit_pct.toFixed(2)}%</td>`;
+      hh += `<tr><td>${r.idx}</td><td>${r.tkr}</td><td>${r.qty}</td>` +
+        `<td>${r.avg_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>` +
+        `<td>${r.cost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>` +
+        `<td>${r.weight_pct.toFixed(2)}%</td>${priceCell}${profitCell}</tr>`;
+    });
+    document.getElementById('holdingsTable').innerHTML = hh;
+    document.querySelectorAll('#holdingsTable th').forEach(th => {
+      th.addEventListener('click', (e) => {
+        const key = th.dataset.key;
+        const existing = holdingsSort.find(s => s.key === key);
+        if (e.shiftKey) {
+          if (existing) existing.dir *= -1;
+          else holdingsSort.push({ key, dir: 1 });
+        } else {
+          holdingsSort = (existing && holdingsSort.length === 1) ? [{ key, dir: existing.dir * -1 }] : [{ key, dir: 1 }];
+        }
+        renderHoldingsTable();
+      });
+    });
+  }
+  renderHoldingsTable();
 }
 
 // --- Cheetah vs Midcap 150 comparison chart (TradingView Lightweight Charts) ---

@@ -58,11 +58,29 @@ for d in dates:
         v += x['qty'] * float(p)
     vals.append(round(v, 2))
 
+# ---- per-holding current price + profit%, for the active lot set as of the last date ----
+# (keyed by ticker so build_live_ladder.py can join it onto actual_holdings.json's display rows;
+# generalises across a future churn since it uses whichever lot set is active on the last date)
+last_d = dates[-1]
+holdings_now = []
+for x in churns[ci]['holdings']:
+    col = x['tkr'] + '.NS'
+    p = px.loc[last_d, col]
+    if pd.isna(p):
+        p = px[col].loc[:last_d].ffill().iloc[-1]
+    p = float(p)
+    holdings_now.append({
+        'tkr': x['tkr'],
+        'current_price': round(p, 2),
+        'profit_pct': round((p / x['avg_price'] - 1) * 100, 2),
+    })
+
 out = {
     'entry_date': entry_date,
     'cost_basis': cost_basis,
     'dates': [d.strftime('%Y-%m-%d') for d in dates],
     'value': vals,
+    'holdings_now': holdings_now,
 }
 json.dump(out, open(OUT, 'w'), indent=2)
 print(f"{OUT}: {len(dates)} pts, entry {entry_date}, cost_basis {cost_basis:,.0f}, "
