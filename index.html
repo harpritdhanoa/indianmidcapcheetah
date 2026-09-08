@@ -167,7 +167,10 @@
     </div>
     <h3 style="margin:22px 0 8px;font-size:14px" id="holdingsTitle">Holdings as bought</h3>
     <div style="overflow-x:auto"><table class="holdings" id="holdingsTable"></table></div>
-    <div class="legend-note" style="margin-top:8px"><span>Click a column header to sort · shift-click to add a secondary sort key</span></div>
+    <div class="legend-note" style="margin-top:8px">
+      <span><span class="dot" style="background:var(--bad)"></span>Highlighted / "At risk" = ranked below the buffer today — would be dropped if the rebalance happened now</span>
+      <span>Click a column header to sort · shift-click to add a secondary sort key</span>
+    </div>
   </div>
 
   <div class="panel">
@@ -331,7 +334,11 @@ if (DATA.actual) {
         `<td>${r.current_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>`;
       const profitCell = r.profit_pct == null ? '<td style="color:var(--muted)">—</td>' :
         `<td class="${r.profit_pct > 0 ? 'up' : (r.profit_pct < 0 ? 'down' : '')}">${r.profit_pct >= 0 ? '+' : ''}${r.profit_pct.toFixed(2)}%</td>`;
-      hh += `<tr><td>${r.idx}</td><td>${r.tkr}</td><td>${r.qty}</td>` +
+      const atRisk = dropTkrs.has(r.tkr);
+      const tkrCell = atRisk
+        ? `<td>${r.tkr} <span class="badge badge-at-risk">At risk</span></td>`
+        : `<td>${r.tkr}</td>`;
+      hh += `<tr class="${atRisk ? 'row-at-risk' : ''}"><td>${r.idx}</td>${tkrCell}<td>${r.qty}</td>` +
         `<td>${r.avg_price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>` +
         `<td>${r.cost.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</td>` +
         `<td>${r.weight_pct.toFixed(2)}%</td>${priceCell}${profitCell}</tr>`;
