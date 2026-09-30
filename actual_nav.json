@@ -56,7 +56,8 @@
     "2026-09-24",
     "2026-09-25",
     "2026-09-28",
-    "2026-09-29"
+    "2026-09-29",
+    "2026-09-30"
   ],
   "value": [
     1771594.02,
@@ -110,161 +111,162 @@
     1773944.85,
     1766790.97,
     1787422.89,
-    1757719.41,
-    1756742.84,
-    1721932.83,
-    1707143.92
+    1757117.73,
+    1756137.89,
+    1720589.31,
+    1710946.14,
+    1703976.19
   ],
   "holdings_now": [
     {
       "tkr": "POWERINDIA",
-      "current_price": 30005.0,
-      "profit_pct": -8.95
+      "current_price": 30630.0,
+      "profit_pct": -7.05
     },
     {
       "tkr": "POLYCAB",
-      "current_price": 8197.5,
-      "profit_pct": -14.32
+      "current_price": 8026.0,
+      "profit_pct": -16.11
     },
     {
       "tkr": "GVT&D",
-      "current_price": 4170.0,
-      "profit_pct": -9.03
+      "current_price": 4201.0,
+      "profit_pct": -8.36
     },
     {
       "tkr": "LAURUSLABS",
-      "current_price": 2012.1,
-      "profit_pct": 28.59
+      "current_price": 1980.0,
+      "profit_pct": 26.54
     },
     {
       "tkr": "BHEL",
-      "current_price": 405.95,
-      "profit_pct": -0.12
+      "current_price": 415.5,
+      "profit_pct": 2.23
     },
     {
       "tkr": "ABCAPITAL",
-      "current_price": 376.65,
-      "profit_pct": -7.16
+      "current_price": 380.6,
+      "profit_pct": -6.19
     },
     {
       "tkr": "BSE",
-      "current_price": 3129.5,
-      "profit_pct": -17.08
+      "current_price": 3092.0,
+      "profit_pct": -18.07
     },
     {
       "tkr": "FEDERALBNK",
-      "current_price": 321.9,
-      "profit_pct": -2.5
+      "current_price": 317.4,
+      "profit_pct": -3.86
     },
     {
       "tkr": "BHARATFORG",
-      "current_price": 1921.1,
-      "profit_pct": -10.05
+      "current_price": 1926.0,
+      "profit_pct": -9.82
     },
     {
       "tkr": "NATIONALUM",
-      "current_price": 341.7,
-      "profit_pct": -5.76
+      "current_price": 340.95,
+      "profit_pct": -5.97
     },
     {
       "tkr": "MCX",
-      "current_price": 3270.0,
-      "profit_pct": 12.18
+      "current_price": 3300.4,
+      "profit_pct": 13.22
     },
     {
       "tkr": "INDIANB",
-      "current_price": 795.85,
-      "profit_pct": -5.99
+      "current_price": 805.9,
+      "profit_pct": -4.81
     },
     {
       "tkr": "MARICO",
-      "current_price": 804.35,
-      "profit_pct": -4.99
+      "current_price": 786.0,
+      "profit_pct": -7.16
     },
     {
       "tkr": "NYKAA",
-      "current_price": 322.65,
-      "profit_pct": -0.57
+      "current_price": 320.0,
+      "profit_pct": -1.39
     },
     {
       "tkr": "LTF",
-      "current_price": 273.55,
-      "profit_pct": -14.41
+      "current_price": 265.0,
+      "profit_pct": -17.08
     },
     {
       "tkr": "MAHABANK",
-      "current_price": 79.7,
-      "profit_pct": -1.56
+      "current_price": 79.37,
+      "profit_pct": -1.96
     },
     {
       "tkr": "ASHOKLEY",
-      "current_price": 153.55,
-      "profit_pct": -2.28
+      "current_price": 154.19,
+      "profit_pct": -1.88
     },
     {
       "tkr": "NAM-INDIA",
-      "current_price": 1080.8,
-      "profit_pct": -10.35
+      "current_price": 1070.0,
+      "profit_pct": -11.25
     },
     {
       "tkr": "AUROPHARMA",
-      "current_price": 1696.6,
-      "profit_pct": 8.58
+      "current_price": 1672.0,
+      "profit_pct": 7.0
     },
     {
       "tkr": "AUBANK",
-      "current_price": 986.6,
-      "profit_pct": -5.81
+      "current_price": 1010.3,
+      "profit_pct": -3.55
     },
     {
       "tkr": "APARINDS",
-      "current_price": 17271.0,
-      "profit_pct": 22.13
+      "current_price": 17384.0,
+      "profit_pct": 22.92
     },
     {
       "tkr": "SAIL",
-      "current_price": 183.07,
-      "profit_pct": 9.75
+      "current_price": 181.49,
+      "profit_pct": 8.81
     },
     {
       "tkr": "FORTIS",
-      "current_price": 825.45,
-      "profit_pct": -15.72
+      "current_price": 770.0,
+      "profit_pct": -21.38
     },
     {
       "tkr": "NMDC",
-      "current_price": 76.42,
-      "profit_pct": -10.26
+      "current_price": 76.54,
+      "profit_pct": -10.12
     },
     {
       "tkr": "GLENMARK",
-      "current_price": 2303.9,
-      "profit_pct": -0.4
+      "current_price": 2334.7,
+      "profit_pct": 0.93
     },
     {
       "tkr": "RADICO",
-      "current_price": 4419.0,
-      "profit_pct": 7.67
+      "current_price": 4366.0,
+      "profit_pct": 6.38
     },
     {
       "tkr": "KEI",
-      "current_price": 4506.5,
-      "profit_pct": -12.27
+      "current_price": 4455.0,
+      "profit_pct": -13.27
     },
     {
       "tkr": "THERMAX",
-      "current_price": 3334.0,
-      "profit_pct": -25.06
+      "current_price": 3392.2,
+      "profit_pct": -23.75
     },
     {
       "tkr": "AIAENG",
-      "current_price": 3814.3,
-      "profit_pct": -21.01
+      "current_price": 3869.0,
+      "profit_pct": -19.88
     },
     {
       "tkr": "NLCINDIA",
-      "current_price": 254.5,
-      "profit_pct": -16.49
+      "current_price": 261.7,
+      "profit_pct": -14.13
     }
   ]
 }
