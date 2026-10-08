@@ -3,8 +3,11 @@ Top up prices_raw.parquet with any new daily bars since its last recorded date,
 for the full Nifty Midcap 150 universe (midcap150_current.csv). Run before
 daily_nav.py / build_ladder_data.py so both see today's close once it exists.
 
-Safe to run multiple times a day / on non-trading days: if there's nothing new,
-it's a no-op.
+Safe to run multiple times a day / on non-trading days. It always refetches a
+short overlap window and overwrites it, so an intraday bar written by a
+mid-session run (manual dispatch) is replaced by the real close on the next run.
+(It used to exit early when a row for today already existed, which froze a
+mid-session price as the close.)
 """
 import sys
 import pandas as pd
@@ -14,13 +17,8 @@ PARQUET = 'prices_raw.parquet'
 
 px_old = pd.read_parquet(PARQUET)
 last_date = px_old.index.max()
-today = pd.Timestamp.today().normalize()
 
-if last_date >= today:
-    print(f"prices_raw.parquet already current through {last_date.date()} (today is {today.date()}). Nothing to do.")
-    sys.exit(0)
-
-# small overlap window so yfinance can correct/backfill a recently-revised close
+# overlap window so yfinance can correct/backfill recent bars, including a partial bar for today
 start = (last_date - pd.Timedelta(days=5)).strftime('%Y-%m-%d')
 
 symbols = pd.read_csv('midcap150_current.csv')['Symbol'].tolist()
