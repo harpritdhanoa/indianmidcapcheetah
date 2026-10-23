@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-22",
+  "as_of": "2026-10-23",
   "last_churn": "2026-07-15",
   "next_rebalance": "2026-11-30",
   "target_n": 30,
@@ -7,41 +7,46 @@
   "portfolio_size": 30,
   "dropped_today": [
     {
+      "tkr": "ASHOKLEY",
+      "name": "Ashok Leyland Ltd.",
+      "rank": 37
+    },
+    {
       "tkr": "KEI",
       "name": "KEI Industries Ltd.",
-      "rank": 44
+      "rank": 43
     },
     {
       "tkr": "POLYCAB",
       "name": "Polycab India Ltd.",
-      "rank": 45
+      "rank": 46
     },
     {
       "tkr": "NMDC",
       "name": "NMDC Ltd.",
-      "rank": 51
+      "rank": 49
     },
     {
       "tkr": "THERMAX",
       "name": "Thermax Ltd.",
-      "rank": 56
+      "rank": 62
     },
     {
       "tkr": "NLCINDIA",
       "name": "NLC India Ltd.",
-      "rank": 63
+      "rank": 69
     },
     {
       "tkr": "FORTIS",
       "name": "Fortis Healthcare Ltd.",
-      "rank": 87
+      "rank": 91
     }
   ],
   "added_today": [
     {
       "tkr": "AJANTPHARM",
       "name": "Ajanta Pharmaceuticals Ltd.",
-      "rank": 12
+      "rank": 11
     },
     {
       "tkr": "IPCALAB",
@@ -59,21 +64,26 @@
       "rank": 21
     },
     {
-      "tkr": "INDUSINDBK",
-      "name": "IndusInd Bank Ltd.",
-      "rank": 24
-    },
-    {
       "tkr": "IDFCFIRSTB",
       "name": "IDFC First Bank Ltd.",
-      "rank": 27
+      "rank": 25
+    },
+    {
+      "tkr": "INDUSINDBK",
+      "name": "IndusInd Bank Ltd.",
+      "rank": 28
+    },
+    {
+      "tkr": "M&MFIN",
+      "name": "Mahindra & Mahindra Financial Services Ltd.",
+      "rank": 32
     }
   ],
   "screened_out": [
     {
       "tkr": "IDEA",
       "name": "Vodafone Idea Ltd.",
-      "rank": 15,
+      "rank": 18,
       "reasons": [
         "negative net worth (-35758 Cr as of FY2026-03-31)",
         "net losses in 2/3 of last fiscal years"
@@ -82,7 +92,7 @@
     {
       "tkr": "PAYTM",
       "name": "One 97 Communications Ltd.",
-      "rank": 22,
+      "rank": 23,
       "reasons": [
         "net losses in 2/3 of last fiscal years"
       ]
@@ -90,7 +100,7 @@
     {
       "tkr": "GMRAIRPORT",
       "name": "GMR Airports Ltd.",
-      "rank": 46,
+      "rank": 44,
       "reasons": [
         "negative net worth (-2480 Cr as of FY2026-03-31)",
         "net losses in 2/3 of last fiscal years"
@@ -99,7 +109,7 @@
     {
       "tkr": "SWIGGY",
       "name": "Swiggy Ltd.",
-      "rank": 131,
+      "rank": 130,
       "reasons": [
         "net losses in 3/3 of last fiscal years",
         "interest coverage -19.77x (EBIT/interest, FY2026-03-31)"
@@ -116,7 +126,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.2,
-      "w_now_pct": 7.28
+      "w_now_pct": 7.33
     },
     {
       "tkr": "FEDERALBNK",
@@ -127,7 +137,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": 4.78
+      "w_now_pct": 4.79
     },
     {
       "tkr": "MCX",
@@ -138,13 +148,13 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.78,
-      "w_now_pct": 4.41
+      "w_now_pct": 4.38
     },
     {
       "tkr": "APARINDS",
       "name": "Apar Industries Ltd.",
       "rank_now": 4,
-      "d1w": 2,
+      "d1w": 0,
       "d1m": 3,
       "held": true,
       "tag": null,
@@ -155,84 +165,73 @@
       "tkr": "AUROPHARMA",
       "name": "Aurobindo Pharma Ltd.",
       "rank_now": 5,
-      "d1w": -1,
+      "d1w": 0,
       "d1m": 4,
       "held": true,
       "tag": null,
       "w_target_pct": 2.82,
-      "w_now_pct": 3.18
-    },
-    {
-      "tkr": "BHARATFORG",
-      "name": "Bharat Forge Ltd.",
-      "rank_now": 6,
-      "d1w": 3,
-      "d1m": -1,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 4.09,
-      "w_now_pct": 3.65
-    },
-    {
-      "tkr": "BHEL",
-      "name": "Bharat Heavy Electricals Ltd.",
-      "rank_now": 7,
-      "d1w": -2,
-      "d1m": 1,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 4.54,
-      "w_now_pct": 4.87
-    },
-    {
-      "tkr": "NATIONALUM",
-      "name": "National Aluminium Co. Ltd.",
-      "rank_now": 8,
-      "d1w": -1,
-      "d1m": -5,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 3.94,
-      "w_now_pct": 3.7
+      "w_now_pct": 3.17
     },
     {
       "tkr": "RADICO",
       "name": "Radico Khaitan Ltd",
-      "rank_now": 9,
-      "d1w": -1,
-      "d1m": -3,
+      "rank_now": 6,
+      "d1w": 1,
+      "d1m": 0,
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": 2.33
+      "w_now_pct": 2.36
     },
     {
-      "tkr": "AUBANK",
-      "name": "AU Small Finance Bank Ltd.",
-      "rank_now": 10,
-      "d1w": 2,
-      "d1m": 2,
+      "tkr": "NATIONALUM",
+      "name": "National Aluminium Co. Ltd.",
+      "rank_now": 7,
+      "d1w": 1,
+      "d1m": -4,
       "held": true,
       "tag": null,
-      "w_target_pct": 2.42,
-      "w_now_pct": 2.41
+      "w_target_pct": 3.94,
+      "w_now_pct": 3.67
+    },
+    {
+      "tkr": "BHARATFORG",
+      "name": "Bharat Forge Ltd.",
+      "rank_now": 8,
+      "d1w": 3,
+      "d1m": -3,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.09,
+      "w_now_pct": 3.67
+    },
+    {
+      "tkr": "BHEL",
+      "name": "Bharat Heavy Electricals Ltd.",
+      "rank_now": 9,
+      "d1w": -3,
+      "d1m": -1,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.54,
+      "w_now_pct": 4.84
     },
     {
       "tkr": "MAHABANK",
       "name": "Bank of Maharashtra",
-      "rank_now": 11,
-      "d1w": -1,
-      "d1m": 0,
+      "rank_now": 10,
+      "d1w": 0,
+      "d1m": 1,
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 3.17
+      "w_now_pct": 3.11
     },
     {
       "tkr": "AJANTPHARM",
       "name": "Ajanta Pharmaceuticals Ltd.",
-      "rank_now": 12,
-      "d1w": 1,
+      "rank_now": 11,
+      "d1w": 2,
       "d1m": 3,
       "held": false,
       "tag": "would_enter",
@@ -240,10 +239,21 @@
       "w_now_pct": null
     },
     {
+      "tkr": "AUBANK",
+      "name": "AU Small Finance Bank Ltd.",
+      "rank_now": 12,
+      "d1w": 0,
+      "d1m": 0,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 2.42,
+      "w_now_pct": 2.41
+    },
+    {
       "tkr": "IPCALAB",
       "name": "Ipca Laboratories Ltd.",
       "rank_now": 13,
-      "d1w": -2,
+      "d1w": -4,
       "d1m": 6,
       "held": false,
       "tag": "would_enter",
@@ -251,65 +261,65 @@
       "w_now_pct": null
     },
     {
+      "tkr": "NYKAA",
+      "name": "FSN E-Commerce Ventures Ltd.",
+      "rank_now": 14,
+      "d1w": 2,
+      "d1m": -1,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 3.26,
+      "w_now_pct": 3.58
+    },
+    {
       "tkr": "POWERINDIA",
       "name": "Hitachi Energy India Ltd.",
-      "rank_now": 14,
-      "d1w": 3,
-      "d1m": 2,
+      "rank_now": 15,
+      "d1w": 2,
+      "d1m": 1,
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": 6.66
+      "w_now_pct": 6.63
+    },
+    {
+      "tkr": "NAM-INDIA",
+      "name": "Nippon Life India Asset Management Ltd.",
+      "rank_now": 16,
+      "d1w": -1,
+      "d1m": 2,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 2.92,
+      "w_now_pct": 2.5
+    },
+    {
+      "tkr": "ABCAPITAL",
+      "name": "Aditya Birla Capital Ltd.",
+      "rank_now": 17,
+      "d1w": 1,
+      "d1m": 3,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.3,
+      "w_now_pct": 4.12
     },
     {
       "tkr": "IDEA",
       "name": "Vodafone Idea Ltd.",
-      "rank_now": 15,
-      "d1w": -1,
-      "d1m": -5,
+      "rank_now": 18,
+      "d1w": -4,
+      "d1m": -8,
       "held": false,
       "tag": "screened",
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "ABCAPITAL",
-      "name": "Aditya Birla Capital Ltd.",
-      "rank_now": 16,
-      "d1w": 2,
-      "d1m": 4,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 4.3,
-      "w_now_pct": 4.14
-    },
-    {
-      "tkr": "NAM-INDIA",
-      "name": "Nippon Life India Asset Management Ltd.",
-      "rank_now": 17,
-      "d1w": -1,
-      "d1m": 1,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 2.92,
-      "w_now_pct": 2.59
-    },
-    {
-      "tkr": "NYKAA",
-      "name": "FSN E-Commerce Ventures Ltd.",
-      "rank_now": 18,
-      "d1w": -3,
-      "d1m": -5,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 3.26,
-      "w_now_pct": 3.53
-    },
-    {
       "tkr": "LLOYDSME",
       "name": "Lloyds Metals And Energy Ltd.",
       "rank_now": 19,
-      "d1w": 2,
+      "d1w": 0,
       "d1m": 13,
       "held": false,
       "tag": "would_enter",
@@ -320,12 +330,12 @@
       "tkr": "AIAENG",
       "name": "AIA Engineering Ltd.",
       "rank_now": 20,
-      "d1w": 0,
-      "d1m": -6,
+      "d1w": 5,
+      "d1m": -5,
       "held": true,
       "tag": null,
       "w_target_pct": 1.36,
-      "w_now_pct": 1.12
+      "w_now_pct": 1.13
     },
     {
       "tkr": "APLAPOLLO",
@@ -339,32 +349,43 @@
       "w_now_pct": null
     },
     {
+      "tkr": "BSE",
+      "name": "BSE Ltd.",
+      "rank_now": 22,
+      "d1w": 0,
+      "d1m": 14,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.25,
+      "w_now_pct": 4.07
+    },
+    {
       "tkr": "PAYTM",
       "name": "One 97 Communications Ltd.",
-      "rank_now": 22,
-      "d1w": 5,
-      "d1m": 17,
+      "rank_now": 23,
+      "d1w": -3,
+      "d1m": 16,
       "held": false,
       "tag": "screened",
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "BSE",
-      "name": "BSE Ltd.",
-      "rank_now": 23,
+      "tkr": "SAIL",
+      "name": "Steel Authority of India Ltd.",
+      "rank_now": 24,
       "d1w": 0,
-      "d1m": 13,
+      "d1m": -2,
       "held": true,
       "tag": null,
-      "w_target_pct": 4.25,
-      "w_now_pct": 4.02
+      "w_target_pct": 2.38,
+      "w_now_pct": 2.62
     },
     {
-      "tkr": "INDUSINDBK",
-      "name": "IndusInd Bank Ltd.",
-      "rank_now": 24,
-      "d1w": -2,
+      "tkr": "IDFCFIRSTB",
+      "name": "IDFC First Bank Ltd.",
+      "rank_now": 25,
+      "d1w": 2,
       "d1m": 5,
       "held": false,
       "tag": "would_enter",
@@ -372,48 +393,37 @@
       "w_now_pct": null
     },
     {
-      "tkr": "GVT&D",
-      "name": "GE Vernova T&D India Ltd.",
-      "rank_now": 25,
-      "d1w": -6,
-      "d1m": 3,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 5.68,
-      "w_now_pct": 5.07
-    },
-    {
       "tkr": "MARICO",
       "name": "Marico Ltd.",
       "rank_now": 26,
-      "d1w": 10,
+      "d1w": 9,
       "d1m": 8,
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": 3.34
+      "w_now_pct": 3.38
     },
     {
-      "tkr": "IDFCFIRSTB",
-      "name": "IDFC First Bank Ltd.",
+      "tkr": "GVT&D",
+      "name": "GE Vernova T&D India Ltd.",
       "rank_now": 27,
-      "d1w": 3,
-      "d1m": 3,
+      "d1w": -6,
+      "d1m": 1,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 5.68,
+      "w_now_pct": 5.13
+    },
+    {
+      "tkr": "INDUSINDBK",
+      "name": "IndusInd Bank Ltd.",
+      "rank_now": 28,
+      "d1w": -5,
+      "d1m": 1,
       "held": false,
       "tag": "would_enter",
       "w_target_pct": null,
       "w_now_pct": null
-    },
-    {
-      "tkr": "SAIL",
-      "name": "Steel Authority of India Ltd.",
-      "rank_now": 28,
-      "d1w": -3,
-      "d1m": -6,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 2.38,
-      "w_now_pct": 2.65
     },
     {
       "tkr": "GLENMARK",
@@ -424,24 +434,24 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.09,
-      "w_now_pct": 2.17
+      "w_now_pct": 2.19
     },
     {
       "tkr": "LTF",
       "name": "L&T Finance Ltd.",
       "rank_now": 30,
-      "d1w": -1,
+      "d1w": 1,
       "d1m": -9,
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 2.5
+      "w_now_pct": 2.49
     },
     {
       "tkr": "INDIANB",
       "name": "Indian Bank",
       "rank_now": 31,
-      "d1w": 0,
+      "d1w": -1,
       "d1m": -7,
       "held": true,
       "tag": null,
@@ -455,38 +465,16 @@
       "d1w": -4,
       "d1m": -15,
       "held": false,
-      "tag": null,
+      "tag": "would_enter",
       "w_target_pct": null,
       "w_now_pct": null
-    },
-    {
-      "tkr": "OFSS",
-      "name": "Oracle Financial Services Software Ltd.",
-      "rank_now": 33,
-      "d1w": -9,
-      "d1m": -2,
-      "held": false,
-      "tag": null,
-      "w_target_pct": null,
-      "w_now_pct": null
-    },
-    {
-      "tkr": "ASHOKLEY",
-      "name": "Ashok Leyland Ltd.",
-      "rank_now": 34,
-      "d1w": -1,
-      "d1m": -11,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 2.95,
-      "w_now_pct": 3.0
     },
     {
       "tkr": "PHOENIXLTD",
       "name": "Phoenix Mills Ltd.",
-      "rank_now": 35,
+      "rank_now": 33,
       "d1w": 5,
-      "d1m": 5,
+      "d1m": 7,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -495,9 +483,20 @@
     {
       "tkr": "BANKINDIA",
       "name": "Bank of India",
-      "rank_now": 36,
+      "rank_now": 34,
       "d1w": -1,
-      "d1m": -3,
+      "d1m": -1,
+      "held": false,
+      "tag": null,
+      "w_target_pct": null,
+      "w_now_pct": null
+    },
+    {
+      "tkr": "OFSS",
+      "name": "Oracle Financial Services Software Ltd.",
+      "rank_now": 35,
+      "d1w": -6,
+      "d1m": -4,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -506,9 +505,31 @@
     {
       "tkr": "3MINDIA",
       "name": "3M India Ltd.",
+      "rank_now": 36,
+      "d1w": 13,
+      "d1m": 19,
+      "held": false,
+      "tag": null,
+      "w_target_pct": null,
+      "w_now_pct": null
+    },
+    {
+      "tkr": "ASHOKLEY",
+      "name": "Ashok Leyland Ltd.",
       "rank_now": 37,
-      "d1w": 18,
-      "d1m": 18,
+      "d1w": -3,
+      "d1m": -14,
+      "held": true,
+      "tag": "at_risk",
+      "w_target_pct": 2.95,
+      "w_now_pct": 3.04
+    },
+    {
+      "tkr": "OIL",
+      "name": "Oil India Ltd.",
+      "rank_now": 38,
+      "d1w": -2,
+      "d1m": 9,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -517,20 +538,9 @@
     {
       "tkr": "FLUOROCHEM",
       "name": "Gujarat Fluorochemicals Ltd.",
-      "rank_now": 38,
-      "d1w": -6,
-      "d1m": -13,
-      "held": false,
-      "tag": null,
-      "w_target_pct": null,
-      "w_now_pct": null
-    },
-    {
-      "tkr": "OIL",
-      "name": "Oil India Ltd.",
       "rank_now": 39,
-      "d1w": -5,
-      "d1m": 8,
+      "d1w": -7,
+      "d1m": -13,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -540,7 +550,7 @@
       "tkr": "KALYANKJIL",
       "name": "Kalyan Jewellers India Ltd.",
       "rank_now": 40,
-      "d1w": -1,
+      "d1w": 0,
       "d1m": 10,
       "held": false,
       "tag": null,
@@ -551,7 +561,7 @@
       "tkr": "MEDANTA",
       "name": "Global Health Ltd.",
       "rank_now": 41,
-      "d1w": 7,
+      "d1w": 13,
       "d1m": 30,
       "held": false,
       "tag": null,
@@ -562,19 +572,8 @@
       "tkr": "OBEROIRLTY",
       "name": "Oberoi Realty Ltd.",
       "rank_now": 42,
-      "d1w": 19,
+      "d1w": 9,
       "d1m": 6,
-      "held": false,
-      "tag": null,
-      "w_target_pct": null,
-      "w_now_pct": null
-    },
-    {
-      "tkr": "LUPIN",
-      "name": "Lupin Ltd.",
-      "rank_now": 43,
-      "d1w": 21,
-      "d1m": 0,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -583,75 +582,64 @@
     {
       "tkr": "KEI",
       "name": "KEI Industries Ltd.",
-      "rank_now": 44,
-      "d1w": -1,
+      "rank_now": 43,
+      "d1w": 2,
       "d1m": -18,
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.74,
-      "w_now_pct": 1.43
-    },
-    {
-      "tkr": "POLYCAB",
-      "name": "Polycab India Ltd.",
-      "rank_now": 45,
-      "d1w": -4,
-      "d1m": -10,
-      "held": true,
-      "tag": "at_risk",
-      "w_target_pct": 5.93,
-      "w_now_pct": 5.2
+      "w_now_pct": 1.41
     },
     {
       "tkr": "GMRAIRPORT",
       "name": "GMR Airports Ltd.",
-      "rank_now": 46,
-      "d1w": 7,
-      "d1m": 5,
+      "rank_now": 44,
+      "d1w": 18,
+      "d1m": 7,
       "held": false,
       "tag": "screened",
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "ANTHEM",
-      "name": "Anthem Biosciences Ltd.",
-      "rank_now": 47,
-      "d1w": -9,
-      "d1m": 19,
-      "held": false,
-      "tag": null,
-      "w_target_pct": null,
-      "w_now_pct": null
-    },
-    {
-      "tkr": "JSWINFRA",
-      "name": "JSW Infrastructure Ltd.",
-      "rank_now": 48,
-      "d1w": 9,
-      "d1m": 10,
-      "held": false,
-      "tag": null,
-      "w_target_pct": null,
-      "w_now_pct": null
-    },
-    {
       "tkr": "PETRONET",
       "name": "Petronet LNG Ltd.",
-      "rank_now": 49,
-      "d1w": -4,
-      "d1m": 3,
+      "rank_now": 45,
+      "d1w": 1,
+      "d1m": 7,
       "held": false,
       "tag": null,
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "YESBANK",
-      "name": "Yes Bank Ltd.",
-      "rank_now": 50,
-      "d1w": -6,
-      "d1m": -4,
+      "tkr": "POLYCAB",
+      "name": "Polycab India Ltd.",
+      "rank_now": 46,
+      "d1w": -3,
+      "d1m": -11,
+      "held": true,
+      "tag": "at_risk",
+      "w_target_pct": 5.93,
+      "w_now_pct": 5.16
+    },
+    {
+      "tkr": "BIOCON",
+      "name": "Biocon Ltd.",
+      "rank_now": 47,
+      "d1w": 5,
+      "d1m": -3,
+      "held": false,
+      "tag": null,
+      "w_target_pct": null,
+      "w_now_pct": null
+    },
+    {
+      "tkr": "360ONE",
+      "name": "360 ONE WAM Ltd.",
+      "rank_now": 48,
+      "d1w": 24,
+      "d1m": 6,
       "held": false,
       "tag": null,
       "w_target_pct": null,
@@ -660,20 +648,31 @@
     {
       "tkr": "NMDC",
       "name": "NMDC Ltd.",
-      "rank_now": 51,
-      "d1w": -9,
-      "d1m": -14,
+      "rank_now": 49,
+      "d1w": -8,
+      "d1m": -12,
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.24,
-      "w_now_pct": 1.98
+      "w_now_pct": 1.95
+    },
+    {
+      "tkr": "ANTHEM",
+      "name": "Anthem Biosciences Ltd.",
+      "rank_now": 50,
+      "d1w": -11,
+      "d1m": 16,
+      "held": false,
+      "tag": null,
+      "w_target_pct": null,
+      "w_now_pct": null
     },
     {
       "tkr": "THERMAX",
       "name": "Thermax Ltd.",
-      "rank_now": 56,
-      "d1w": -6,
-      "d1m": -15,
+      "rank_now": 62,
+      "d1w": -14,
+      "d1m": -21,
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.5,
@@ -682,9 +681,9 @@
     {
       "tkr": "NLCINDIA",
       "name": "NLC India Ltd.",
-      "rank_now": 63,
-      "d1w": -1,
-      "d1m": -14,
+      "rank_now": 69,
+      "d1w": -4,
+      "d1m": -20,
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.24,
@@ -693,13 +692,13 @@
     {
       "tkr": "FORTIS",
       "name": "Fortis Healthcare Ltd.",
-      "rank_now": 87,
-      "d1w": 4,
-      "d1m": 1,
+      "rank_now": 91,
+      "d1w": -2,
+      "d1m": -3,
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.32,
-      "w_now_pct": 1.88
+      "w_now_pct": 1.89
     }
   ]
 }
