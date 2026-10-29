@@ -56,7 +56,7 @@
     {
       "tkr": "AJANTPHARM",
       "name": "Ajanta Pharmaceuticals Ltd.",
-      "rank": 7
+      "rank": 8
     },
     {
       "tkr": "IPCALAB",
@@ -71,7 +71,7 @@
     {
       "tkr": "APLAPOLLO",
       "name": "APL Apollo Tubes Ltd.",
-      "rank": 22
+      "rank": 21
     },
     {
       "tkr": "PHOENIXLTD",
@@ -146,7 +146,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.2,
-      "w_now_pct": 7.73
+      "w_now_pct": 7.91
     },
     {
       "tkr": "FEDERALBNK",
@@ -157,7 +157,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": 4.68
+      "w_now_pct": 4.63
     },
     {
       "tkr": "MCX",
@@ -179,7 +179,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.39,
-      "w_now_pct": 2.83
+      "w_now_pct": 2.84
     },
     {
       "tkr": "AUROPHARMA",
@@ -190,7 +190,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.82,
-      "w_now_pct": 3.16
+      "w_now_pct": 3.17
     },
     {
       "tkr": "BHARATFORG",
@@ -201,29 +201,29 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.09,
-      "w_now_pct": 3.55
-    },
-    {
-      "tkr": "AJANTPHARM",
-      "name": "Ajanta Pharmaceuticals Ltd.",
-      "rank_now": 7,
-      "d1w": 5,
-      "d1m": 6,
-      "held": false,
-      "tag": "would_enter",
-      "w_target_pct": null,
-      "w_now_pct": null
+      "w_now_pct": 3.59
     },
     {
       "tkr": "BHEL",
       "name": "Bharat Heavy Electricals Ltd.",
-      "rank_now": 8,
-      "d1w": -1,
-      "d1m": -1,
+      "rank_now": 7,
+      "d1w": 0,
+      "d1m": 0,
       "held": true,
       "tag": null,
       "w_target_pct": 4.54,
-      "w_now_pct": 4.77
+      "w_now_pct": 4.76
+    },
+    {
+      "tkr": "AJANTPHARM",
+      "name": "Ajanta Pharmaceuticals Ltd.",
+      "rank_now": 8,
+      "d1w": 4,
+      "d1m": 5,
+      "held": false,
+      "tag": "would_enter",
+      "w_target_pct": null,
+      "w_now_pct": null
     },
     {
       "tkr": "RADICO",
@@ -234,7 +234,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": 2.29
+      "w_now_pct": 2.28
     },
     {
       "tkr": "NATIONALUM",
@@ -267,7 +267,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": 3.15
+      "w_now_pct": 3.17
     },
     {
       "tkr": "LLOYDSME",
@@ -289,7 +289,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.26,
-      "w_now_pct": 3.76
+      "w_now_pct": 3.75
     },
     {
       "tkr": "POWERINDIA",
@@ -300,7 +300,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": 6.8
+      "w_now_pct": 6.72
     },
     {
       "tkr": "AUBANK",
@@ -333,7 +333,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.38,
-      "w_now_pct": 2.45
+      "w_now_pct": 2.43
     },
     {
       "tkr": "PAYTM",
@@ -355,29 +355,29 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.25,
-      "w_now_pct": 4.21
-    },
-    {
-      "tkr": "ABCAPITAL",
-      "name": "Aditya Birla Capital Ltd.",
-      "rank_now": 21,
-      "d1w": -5,
-      "d1m": -4,
-      "held": true,
-      "tag": null,
-      "w_target_pct": 4.3,
-      "w_now_pct": 4.05
+      "w_now_pct": 4.19
     },
     {
       "tkr": "APLAPOLLO",
       "name": "APL Apollo Tubes Ltd.",
-      "rank_now": 22,
-      "d1w": -1,
-      "d1m": -2,
+      "rank_now": 21,
+      "d1w": 0,
+      "d1m": -1,
       "held": false,
       "tag": "would_enter",
       "w_target_pct": null,
       "w_now_pct": null
+    },
+    {
+      "tkr": "ABCAPITAL",
+      "name": "Aditya Birla Capital Ltd.",
+      "rank_now": 22,
+      "d1w": -6,
+      "d1m": -5,
+      "held": true,
+      "tag": null,
+      "w_target_pct": 4.3,
+      "w_now_pct": 4.03
     },
     {
       "tkr": "AIAENG",
@@ -388,7 +388,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 1.36,
-      "w_now_pct": 1.08
+      "w_now_pct": 1.09
     },
     {
       "tkr": "GLENMARK",
@@ -399,7 +399,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.09,
-      "w_now_pct": 2.23
+      "w_now_pct": 2.24
     },
     {
       "tkr": "GVT&D",
@@ -410,7 +410,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.68,
-      "w_now_pct": 5.43
+      "w_now_pct": 5.38
     },
     {
       "tkr": "NAM-INDIA",
@@ -421,7 +421,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.92,
-      "w_now_pct": 2.38
+      "w_now_pct": 2.37
     },
     {
       "tkr": "PHOENIXLTD",
@@ -454,7 +454,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": 3.31
+      "w_now_pct": 3.36
     },
     {
       "tkr": "OFSS",
@@ -542,7 +542,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 3.67,
-      "w_now_pct": 3.96
+      "w_now_pct": 3.98
     },
     {
       "tkr": "3MINDIA",
@@ -575,7 +575,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.95,
-      "w_now_pct": 2.9
+      "w_now_pct": 2.89
     },
     {
       "tkr": "OBEROIRLTY",
@@ -597,7 +597,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 5.93,
-      "w_now_pct": 5.12
+      "w_now_pct": 5.09
     },
     {
       "tkr": "BIOCON",
@@ -663,7 +663,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.74,
-      "w_now_pct": 1.38
+      "w_now_pct": 1.37
     },
     {
       "tkr": "JSWINFRA",
@@ -696,7 +696,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.24,
-      "w_now_pct": 1.89
+      "w_now_pct": 1.88
     },
     {
       "tkr": "THERMAX",
@@ -707,7 +707,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.5,
-      "w_now_pct": 1.15
+      "w_now_pct": 1.14
     },
     {
       "tkr": "NLCINDIA",
@@ -718,7 +718,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.24,
-      "w_now_pct": 1.01
+      "w_now_pct": 1.02
     },
     {
       "tkr": "FORTIS",
@@ -729,7 +729,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.32,
-      "w_now_pct": 1.9
+      "w_now_pct": 1.89
     }
   ]
 }
