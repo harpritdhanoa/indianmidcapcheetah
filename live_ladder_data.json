@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-03",
   "last_churn": "2026-07-15",
   "next_rebalance": "2026-11-30",
   "target_n": 30,
@@ -69,13 +69,13 @@
       "rank": 22
     },
     {
-      "tkr": "PHOENIXLTD",
-      "name": "Phoenix Mills Ltd.",
+      "tkr": "IDFCFIRSTB",
+      "name": "IDFC First Bank Ltd.",
       "rank": 24
     },
     {
-      "tkr": "IDFCFIRSTB",
-      "name": "IDFC First Bank Ltd.",
+      "tkr": "PHOENIXLTD",
+      "name": "Phoenix Mills Ltd.",
       "rank": 25
     },
     {
@@ -146,7 +146,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.2,
-      "w_now_pct": NaN
+      "w_now_pct": 8.08
     },
     {
       "tkr": "FEDERALBNK",
@@ -157,7 +157,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.15,
-      "w_now_pct": NaN
+      "w_now_pct": 4.39
     },
     {
       "tkr": "MCX",
@@ -168,7 +168,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.78,
-      "w_now_pct": NaN
+      "w_now_pct": 4.73
     },
     {
       "tkr": "APARINDS",
@@ -179,7 +179,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.39,
-      "w_now_pct": NaN
+      "w_now_pct": 2.75
     },
     {
       "tkr": "AUROPHARMA",
@@ -190,7 +190,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.82,
-      "w_now_pct": NaN
+      "w_now_pct": 3.2
     },
     {
       "tkr": "BHEL",
@@ -201,7 +201,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.54,
-      "w_now_pct": NaN
+      "w_now_pct": 4.67
     },
     {
       "tkr": "BHARATFORG",
@@ -212,7 +212,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.09,
-      "w_now_pct": NaN
+      "w_now_pct": 3.56
     },
     {
       "tkr": "RADICO",
@@ -223,7 +223,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.08,
-      "w_now_pct": NaN
+      "w_now_pct": 2.25
     },
     {
       "tkr": "IPCALAB",
@@ -245,7 +245,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.99,
-      "w_now_pct": NaN
+      "w_now_pct": 3.11
     },
     {
       "tkr": "POWERINDIA",
@@ -256,7 +256,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 7.43,
-      "w_now_pct": NaN
+      "w_now_pct": 6.43
     },
     {
       "tkr": "NATIONALUM",
@@ -267,7 +267,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.94,
-      "w_now_pct": NaN
+      "w_now_pct": 3.61
     },
     {
       "tkr": "AUBANK",
@@ -278,7 +278,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.42,
-      "w_now_pct": NaN
+      "w_now_pct": 2.13
     },
     {
       "tkr": "LLOYDSME",
@@ -300,7 +300,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.26,
-      "w_now_pct": NaN
+      "w_now_pct": 3.71
     },
     {
       "tkr": "IDEA",
@@ -333,7 +333,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.25,
-      "w_now_pct": NaN
+      "w_now_pct": 4.32
     },
     {
       "tkr": "SAIL",
@@ -344,7 +344,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.38,
-      "w_now_pct": NaN
+      "w_now_pct": 2.5
     },
     {
       "tkr": "ABCAPITAL",
@@ -355,7 +355,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 4.3,
-      "w_now_pct": NaN
+      "w_now_pct": 4.22
     },
     {
       "tkr": "GVT&D",
@@ -366,7 +366,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 5.68,
-      "w_now_pct": NaN
+      "w_now_pct": 5.25
     },
     {
       "tkr": "APLAPOLLO",
@@ -388,25 +388,25 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.09,
-      "w_now_pct": NaN
+      "w_now_pct": 2.27
     },
     {
-      "tkr": "PHOENIXLTD",
-      "name": "Phoenix Mills Ltd.",
+      "tkr": "IDFCFIRSTB",
+      "name": "IDFC First Bank Ltd.",
       "rank_now": 24,
-      "d1w": 4,
-      "d1m": 16,
+      "d1w": 3,
+      "d1m": 9,
       "held": false,
       "tag": "would_enter",
       "w_target_pct": null,
       "w_now_pct": null
     },
     {
-      "tkr": "IDFCFIRSTB",
-      "name": "IDFC First Bank Ltd.",
+      "tkr": "PHOENIXLTD",
+      "name": "Phoenix Mills Ltd.",
       "rank_now": 25,
-      "d1w": 2,
-      "d1m": 8,
+      "d1w": 3,
+      "d1m": 15,
       "held": false,
       "tag": "would_enter",
       "w_target_pct": null,
@@ -421,7 +421,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 2.92,
-      "w_now_pct": NaN
+      "w_now_pct": 2.49
     },
     {
       "tkr": "INDUSINDBK",
@@ -443,7 +443,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.34,
-      "w_now_pct": NaN
+      "w_now_pct": 3.62
     },
     {
       "tkr": "OFSS",
@@ -531,7 +531,7 @@
       "held": true,
       "tag": null,
       "w_target_pct": 3.67,
-      "w_now_pct": NaN
+      "w_now_pct": 3.86
     },
     {
       "tkr": "KALYANKJIL",
@@ -553,7 +553,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.95,
-      "w_now_pct": NaN
+      "w_now_pct": 3.0
     },
     {
       "tkr": "KEI",
@@ -564,7 +564,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.74,
-      "w_now_pct": NaN
+      "w_now_pct": 1.37
     },
     {
       "tkr": "PERSISTENT",
@@ -586,7 +586,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 5.93,
-      "w_now_pct": NaN
+      "w_now_pct": 5.08
     },
     {
       "tkr": "OIL",
@@ -652,7 +652,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.5,
-      "w_now_pct": NaN
+      "w_now_pct": 1.11
     },
     {
       "tkr": "GLAXO",
@@ -696,7 +696,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.99,
-      "w_now_pct": NaN
+      "w_now_pct": 2.47
     },
     {
       "tkr": "NMDC",
@@ -707,7 +707,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.24,
-      "w_now_pct": NaN
+      "w_now_pct": 1.87
     },
     {
       "tkr": "NLCINDIA",
@@ -718,7 +718,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 1.24,
-      "w_now_pct": NaN
+      "w_now_pct": 0.98
     },
     {
       "tkr": "FORTIS",
@@ -729,7 +729,7 @@
       "held": true,
       "tag": "at_risk",
       "w_target_pct": 2.32,
-      "w_now_pct": NaN
+      "w_now_pct": 1.94
     }
   ]
 }
